@@ -12,6 +12,10 @@ const router = new VueRouter({
         component: () => import('./components/start_page.vue')
     },
     {
+        path: '/gameSelect', name:'gameSelect_page',
+        component: () => import('./components/game_components/gameSelect_page.vue')
+    },
+    {
         path: '/end', name:'end_page',
         component: () => import('./components/end_page.vue')
     }

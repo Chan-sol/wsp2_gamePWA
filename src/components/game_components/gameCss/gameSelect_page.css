@@ -1,0 +1,16 @@
+.game_name {
+    color: rgb(199, 63, 63);
+    margin-left: 5%;
+}
+
+.game_description {
+    color: rgb(255, 255, 255);
+    margin-left: 7%;
+    margin-top: 2vh;
+}
+
+.game_button {
+    float: right;
+    margin-bottom: 5%;
+    margin-right: 5%;
+}
