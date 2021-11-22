@@ -1,9 +1,4 @@
 <template>
-<<<<<<< Updated upstream
-    <v-container>
-        <h1>Start Page</h1>
-        <v-btn dark to="/end">End</v-btn>
-=======
     <v-container fluid fill-height class="entire">
         <div class="canvas">
             <!-- 상원 -->
@@ -110,6 +105,6 @@
             <h1 class="title white--text">Press to start (Offline.ver)</h1>
             <v-btn fab large class="mt-5" color="#fe4063" dark to="/gameselect"></v-btn>
         </div>
->>>>>>> Stashed changes
     </v-container>
 </template>
+<style src="./css/start_page_ani.css"></style>
