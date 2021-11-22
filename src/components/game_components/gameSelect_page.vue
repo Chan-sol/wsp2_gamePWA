@@ -35,12 +35,5 @@
     </div>
 </template>
 <script>
-export default {
-    name: 'App',
-    created() {
-        // 다크 모드
-        this.$vuetify.theme.dark = true;
-    }
-}
 </script>
 <style src="./gameCss/gameSelect_page.css"></style>
