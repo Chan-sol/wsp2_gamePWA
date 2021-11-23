@@ -42,6 +42,18 @@ const router = new VueRouter({
         component: () => import('./components/game_components/gameSelect_page.vue')
     },
     {
+        path: '/numberBaseball', name:'numberBaseball_game',
+        component: () => import('./components/game_components/numberBaseball_game.vue')
+    },
+    // {
+    //     path: '/game2', name:'game2_page',
+    //     component: () => import('./components/game_components/game2_page.vue')
+    // },
+    // {
+    //     path: '/game3', name:'game3_page',
+    //     component: () => import('./components/game_components/game3_page.vue')
+    // },
+    {
         path: '/end', name:'end_page',
         component: () => import('./components/end_page.vue')
     }
