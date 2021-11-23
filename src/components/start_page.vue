@@ -103,7 +103,7 @@
         </div>
         <div class="buttonOff">
             <h1 class="title white--text">Press to start (Offline.ver)</h1>
-            <v-btn fab large class="mt-5" color="#fe4063" dark to="/gameselect"></v-btn>
+            <v-btn fab large class="mt-5" color="#fe4063" dark to="/gameSelect"></v-btn>
         </div>
     </v-container>
 </template>
