@@ -5,7 +5,7 @@
             <v-divider></v-divider>
             <p class="game_description">This is our game 1.</p>
             <div class="game_button">
-            <v-btn fab large class="mt-5" color="black" dark to="/game1">
+            <v-btn fab large class="mt-5" color="black" dark to="/numberBaseball">
                 <v-icon>radio_button_unchecked</v-icon>
             </v-btn>
             </div>
