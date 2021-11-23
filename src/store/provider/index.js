@@ -2,7 +2,7 @@
 import firebase from "firebase/compat/app";
 
 // 파이어베이스 패키지 모듈 가져오기
-import "firebase/firebase-auth"
+import "firebase/auth"
 import router from "@/router";
 
 export default {
@@ -44,7 +44,7 @@ export default {
                 });
                 commit("fnSetLoading", false); // 스토어에 시간 지연 종료로 상태 변경
                 commit("fnSetErrorMessage", "") // 스토어 에러 메시지 초기화
-                router.push("/gameSelect"); // 로그인 이후 가야 할 화면으로 이동
+                router.push("/main"); // 로그인 이후 가야 할 화면으로 이동
             })
             .catch(err => {
                 commit("fnSetErrorMessage", err.message);
@@ -62,14 +62,14 @@ export default {
             .then(pUserInfo => {
                 // 로그인에 성공하면 스토어에 계정 정보 저장
                 commit("fnSetUser", {
-                    id: pUserInfo.uid,
-                    name: pUserInfo.displayName,
-                    email: pUserInfo.email,
-                    photoURL: pUserInfo.photoURL
+                    id: pUserInfo.user.uid,
+                    name: pUserInfo.user.displayName,
+                    email: pUserInfo.user.email,
+                    photoURL: pUserInfo.user.photoURL
                 });
                 commit("fnSetLoading", false); // 스토어에 시간 지연 종료로 상태 변경
                 commit("fnSetErrorMessage", "") // 스토어 에러 메시지 초기화
-                router.push("/gameSelect"); // 로그인 이후 가야 할 화면으로 이동
+                router.push("/main"); // 로그인 이후 가야 할 화면으로 이동
             })
             .catch(err => {
                 commit("fnSetErrorMessage", err.message);
@@ -93,14 +93,14 @@ export default {
             .then(pUserInfo => {
                 // 로그인에 성공하면 스토어에 계정 정보 저장
                 commit("fnSetUser", {
-                    id: pUserInfo.uid,
-                    name: pUserInfo.displayName,
-                    email: pUserInfo.email,
-                    photoURL: pUserInfo.photoURL
-                });
+                    id: pUserInfo.user.uid,
+                    name: pUserInfo.user.displayName,
+                    email: pUserInfo.user.email,
+                    photoURL: pUserInfo.user.photoURL
+            });
                 commit("fnSetLoading", false); // 스토어에 시간 지연 종료로 상태 변경
                 commit("fnSetErrorMessage", "") // 스토어 에러 메시지 초기화
-                router.push("/gameSelect"); // 로그인 이후 가야 할 화면으로 이동
+                router.push("/main"); // 로그인 이후 가야 할 화면으로 이동
             })
             .catch(err => {
                 commit("fnSetErrorMessage", err.message);
@@ -112,10 +112,10 @@ export default {
         fnDoLoginAuto({ commit }, pUserInfo) {
             // 자동 로그인 시 스토어에 계정 정보 저장
             commit("fnSetUser", {
-                id: pUserInfo.uid,
-                name: pUserInfo.displayName,
-                email: pUserInfo.email,
-                photoURL: pUserInfo.photoURL
+                id: pUserInfo.user.uid,
+                name: pUserInfo.user.displayName,
+                email: pUserInfo.user.email,
+                photoURL: pUserInfo.user.photoURL
             });
             commit("fnSetLoading", false); // 스토어에 시간 지연 종료로 상태 변경
             commit("fnSetErrorMessage", "") // 스토어 에러 메시지 초기화
