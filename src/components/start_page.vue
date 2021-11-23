@@ -99,7 +99,7 @@
         </div>
         <div class="buttonOn">
             <h1 class="title white--text">Press to start (Online.ver)</h1>
-            <v-btn fab large class="mt-5" color="#e6ebce" dark to="/loginMain"></v-btn>
+            <v-btn fab large class="mt-5" color="#e6ebce" dark to="/main"></v-btn>
         </div>
         <div class="buttonOff">
             <h1 class="title white--text">Press to start (Offline.ver)</h1>
