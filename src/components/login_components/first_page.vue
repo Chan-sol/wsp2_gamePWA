@@ -19,10 +19,14 @@
             </v-col>
             <v-col offset="3" cols="6" class="text-center mt-5">
                 <!-- 이메일 계정 로그인 버튼 표시 및 처리 -->
-                <v-btn @click="fnDoGoogleLogin_Popup" block outlined color="white" large dark>
+                <v-btn to="/emailLogin" block outlined color="white" large dark>
                     <v-icon left color="white">mdi-email</v-icon>이메일 로그인
                 </v-btn>
             </v-col>
+        </v-row>
+        <v-row>
+            <v-divider>계정이 없으신가요?</v-divider>
+            <v-btn to="/emailRegister" block outlined color="white" large dark>회원가입</v-btn>
         </v-row>
     </v-container>
 </template>
