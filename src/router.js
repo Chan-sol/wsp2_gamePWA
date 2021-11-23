@@ -11,6 +11,11 @@ const router = new VueRouter({
         path: '/', name:'start_page',
         component: () => import('./components/start_page.vue')
     },
+    // login 관련 path
+    {
+        path: '/loginFirst', name:'loginFirst_page',
+        component: () => import('./components/login_components/first_page.vue')
+    },
     {
         path: '/gameSelect', name:'gameSelect_page',
         component: () => import('./components/game_components/gameSelect_page.vue')
