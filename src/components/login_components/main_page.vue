@@ -2,6 +2,11 @@
 <template>
     <v-container>
         <v-row>
+            <v-col cols="4" offset="8" sm="3" offset-sm="9" class="text-center my-4">
+                <v-btn @click="fnDoLogout" color="orange" dark>로그 아웃</v-btn>
+            </v-col>
+        </v-row>
+        <v-row>
             <v-col xs="12" class="mt-5 text-center">
                 <h1 class="display-1 my-1">오징어 게임에 오신 걸 환영합니다</h1>
             </v-col>
@@ -16,15 +21,13 @@
             <v-row>
                 <v-col xs="12" class="mt-5 text-center">
                     <h3 class="white">{{ fnGetUser.name }}님의 Ranking 현황</h3>
+                    <v-btn to="/gameSelect" color="orange" dark class="mt-5">메뉴로</v-btn>
                 </v-col>
             </v-row>
         </v-row>
     </v-container>
 </template>
 <script>
-// 파이어베이스에서 oFirebaseAuth 객체 변수 가져옴
-// import { oFirebaseAuth } from "@/datasources/firebase";
-
 export default {
     computed: {
         // 스토어에서 로그인된 계정 정보 반환
@@ -32,7 +35,13 @@ export default {
             let oUserInfo = this.$store.getters.fnGetUser;
             return oUserInfo;
         }
-    }
+    },
+    methods: {
+        // 스토어의 로그아웃 기능 사용
+        fnDoLogout() {
+            this.$store.dispatch('fnDoLogout')
+        }
+    },
 }
 </script>
 <style>
