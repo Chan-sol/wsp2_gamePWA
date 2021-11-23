@@ -16,7 +16,7 @@ new Vue({
   store,
   vuetify,
   created() {
-    // 사용자가 로그아웃, 비밀번호 등을 변경했을 때 처리
+    // 사용자가 로그아웃했을 때 등을 처리
     firebase.auth().onAuthStateChanged(pUserInfo => {
       if(pUserInfo){
         // 이미 로그인되어 있었는지 등의 상태를 파악하여 처리
