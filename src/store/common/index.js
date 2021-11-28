@@ -1,7 +1,7 @@
 export default {
     state: {
         bIsLoading: false, // 처리 중 시간이 걸림을 나타냄
-        sErrorMessage: '' // 처리 중 오류 메시지 내용
+        sErrorMessage: '', // 처리 중 오류 메시지 내용
     },
     mutations: {
         // 처리 중 시간이 걸리는 지 설정 (setter)

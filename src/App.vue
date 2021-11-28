@@ -1,8 +1,5 @@
 <template>
   <v-app>
-<<<<<<< Updated upstream
-    <v-content>
-=======
     <v-navigation-drawer clipped v-model="drawer" app src="./assets/Image/navBg.png">
       <v-layout fill-height column justify-space-between>
         <div>
@@ -46,7 +43,6 @@
         <v-spacer></v-spacer>
     </v-app-bar>
     <v-content class="bgColor">
->>>>>>> Stashed changes
       <v-slide-x-transition mode="out in">
         <!-- name 값이 없는 경우가 default components -->
         <router-view></router-view>
@@ -55,19 +51,6 @@
   </v-app>
 </template>
 <script>
-<<<<<<< Updated upstream
-export default {
-    name: 'App',
-    created() {
-        // 다크 모드
-        this.$vuetify.theme.dark = true;
-    }
-}
-=======
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-</script>
-=======
 export default {
     data() {
       return {
@@ -100,4 +83,3 @@ export default {
     background-color: rgb(34, 34, 34);
   }
 </style>
->>>>>>> Stashed changes
