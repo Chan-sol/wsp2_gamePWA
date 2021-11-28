@@ -54,7 +54,7 @@ export default {
     }
 }
 </script>
-<style>
+<style scoped>
     @import url(https://fonts.googleapis.com/css?family=BenchNine:700);
 
     @keyframes logoAnimation {

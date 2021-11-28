@@ -123,4 +123,3 @@ export default {
     },
 }
 </script>
-<style src="./css/start_page_ani.css"></style>

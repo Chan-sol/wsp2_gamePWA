@@ -22,13 +22,9 @@ export default {
     }
 }
 </script>
-<style>
+<style scoped>
   @import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
 
-  .name {
-    font-weight: bolder;
-  }
-  
   .welcome {
     font-family: 'Oswald', sans-serif;
     font-size: 22px;
