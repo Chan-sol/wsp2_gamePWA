@@ -1,7 +1,7 @@
 <template>
     <v-container class="firstPageBg">
         <div class="imgContainer">
-            <img src="./loginCss/logo.png">
+            <img class="logoImg" src="./loginCss/logo.png">
         </div>
         <div class="buttonContainer">
             <button @click="fnDoGoogleLogin_Popup" class="btn googleLogin">
@@ -61,7 +61,7 @@ export default {
         justify-content: center;
     }
 
-    img {
+    .logoImg {
         animation-name: logoAnimation;
         animation-duration: 3s;
         animation-timing-function: linear;
