@@ -99,12 +99,28 @@
         </div>
         <div class="buttonOn">
             <h1 class="title white--text">Press to start (Online.ver)</h1>
-            <v-btn fab large class="mt-5" color="#e6ebce" dark to="/main"></v-btn>
+            <v-btn fab large class="mt-5" color="#e6ebce" dark to="/gameselect"></v-btn>
         </div>
         <div class="buttonOff">
             <h1 class="title white--text">Press to start (Offline.ver)</h1>
-            <v-btn fab large class="mt-5" color="#fe4063" dark to="/gameSelect"></v-btn>
+            <v-btn fab large class="mt-5" color="#fe4063" @click="fnDoLogoutAndGameSelect"></v-btn>
         </div>
     </v-container>
 </template>
+<script>
+export default {
+    computed: {
+      fnGetAuthStatus() {
+        return this.$store.getters.fnGetAuthStatus
+      }
+    },
+    methods: {
+        fnDoLogoutAndGameSelect() {
+            if(this.fnGetAuthStatus)
+                this.$store.dispatch('fnDoLogout')
+            this.$router.push('/gameSelect')
+        }
+    },
+}
+</script>
 <style src="./css/start_page_ani.css"></style>
