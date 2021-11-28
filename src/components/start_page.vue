@@ -98,8 +98,8 @@
             <div class="fifth_letter05"></div>
         </div>
         <div class="buttonOn">
-            <v-btn fab large class="mt-5" color="#e6ebce" dark to="/gameselect"></v-btn>
             <h1 class="title white--text">Press to start<br>(Online.ver)</h1>
+            <v-btn fab large class="mt-5" color="#e6ebce" dark to="/first"></v-btn>
         </div>
         <div class="buttonOff">
             <h1 class="title white--text">Press to start<br>(Offline.ver)</h1>
@@ -123,3 +123,4 @@ export default {
     },
 }
 </script>
+<style scoped src="./css/start_page_ani.css"></style>
