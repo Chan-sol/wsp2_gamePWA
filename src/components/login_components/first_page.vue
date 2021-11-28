@@ -1,17 +1,27 @@
 <template>
-    <v-container class="firstPageBg">
+    <v-container class="page">
         <div class="imgContainer">
-            <img class="logoImg" src="./loginCss/logo.png">
+            <img class="logoImg" src="./loginImage/logo.png">
         </div>
-        <div class="buttonContainer">
+        <div v-if="!fnGetAuthStatus" class="buttonContainer notLogin">
             <button @click="fnDoGoogleLogin_Popup" class="btn googleLogin">
                 <v-icon left color="white">mdi-google</v-icon>Google Login
             </button>
             <button @click="fnEmailLoginPage" class="btn emailLogin">
                 <v-icon left color="white">mdi-email</v-icon>Email Login
             </button>
+            <hr color="#e6ebce" class="hr">
+            <span class="des">Didn't you sign up yet?</span>
             <button @click="fnRegisterPage" class="btn emailRegister">
                 <v-icon left color="black">mdi-pencil</v-icon>Email Register
+            </button>
+        </div>
+        <div v-else class="buttonContainer Login">
+            <button @click="fnGameSelectPage()" class="btn menu">
+                <v-icon left color="black">sports_esports</v-icon>Game Menu
+            </button>
+            <button @click="fnDoLogout" class="btn logout">
+                <v-icon left color="white">mdi-login</v-icon>Logout
             </button>
         </div>
     </v-container>
@@ -28,12 +38,18 @@ export default {
         },
         fnRegisterPage() {
             this.$router.push('/emailRegister')
+        },
+        fnGameSelectPage() {
+            this.$router.push('/gameSelect')
         }
     },
     computed: {
         fnGetLoading() {
             // 시간 지연 상태 스토어에서 읽어서 반환
             this.$store.getters.fnGetLoading;
+        },
+        fnGetAuthStatus() {
+            return this.$store.getters.fnGetAuthStatus
         }
     }
 }
@@ -52,6 +68,15 @@ export default {
             width: 79.2vmin;
             height: 38.17vmin;
         }
+    }
+
+    .page {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
     .imgContainer {
@@ -77,6 +102,7 @@ export default {
         align-items: center;
     }
 
+    /* 로그인 안 했을 때 버튼들 */
     .googleLogin {
         background-color: #fe4063ce;
         color: white;
@@ -91,7 +117,7 @@ export default {
     }
 
     .btn {
-        width: 250px;
+        width: 35vh;
         border: none;
         cursor: pointer;
         display: inline-block;
@@ -160,5 +186,44 @@ export default {
     .btn:hover:after {
         height: 100%;
         width: 100%;
+    }
+
+    .hr {
+        width: 350px;
+        margin-top: 40px;
+        opacity: 0.5;
+    }
+    
+    .des {
+        font-size: 15px;
+        color: #e6ebce;
+        margin-top: 10px;
+        margin-bottom: 30px;
+    }
+
+    /* 로그인 했을 때 버튼들 */
+    .menu {
+        background-color: #e6ebcece;
+        color: rgb(34, 34, 34);
+    }
+    .logout {
+        background-color: #008080ce;
+        color: white;
+    }
+
+    .menu:before,
+    .menu:after {
+        border-color: #e6ebce;
+    }
+    .logout:before,
+    .logout:after {
+        border-color: #008080;
+    }
+
+    .menu:hover {
+        background-color: #e6ebce88;
+    }
+    .logout:hover {
+        background-color: #00808088;
     }
 </style>
