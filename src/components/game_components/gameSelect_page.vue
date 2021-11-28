@@ -16,7 +16,7 @@
             <v-divider></v-divider>
             <p class="game_description">This is our game 2.</p>
             <div class="game_button">
-            <v-btn fab large class="mt-5" color="black" dark to="/game2">
+            <v-btn fab large class="mt-5" color="black" dark to="/Updown">
                 <v-icon>change_history</v-icon>
             </v-btn>
             </div>
