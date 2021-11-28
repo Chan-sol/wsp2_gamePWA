@@ -1,16 +1,16 @@
 <template>
-    <v-container flow>
+    <v-container>
         <v-row>
             <v-col cols="12" class="text-center my-5">
-                <h1 class="display-1">로그인</h1>
+                <h1 class="display-1 email">Email Login</h1>
             </v-col>
         </v-row>
         <v-row>
-            <v-col class="text-center" cols="8" offset="2" sm="6" offset-sm="3">
+            <v-col class="text-center inputFields" cols="8" offset="2" sm="6" offset-sm="3">
                 <form @submit.prevent="fnDoLogin">
-                    <v-text-field name="Email" label="이메일" type="email" v-model="sEmail" required></v-text-field>
-                    <v-text-field name="Password" label="비밀번호" type="password" v-model="sPassword" required></v-text-field>
-                    <v-btn type="submit" v-if="!fnGetLoading" color="orange" dark>로그인</v-btn>
+                    <v-text-field name="Email" label="Email" type="email" v-model="sEmail" required class="white--text"></v-text-field>
+                    <v-text-field name="Password" label="PassWord" type="password" v-model="sPassword" required></v-text-field>
+                    <v-btn type="submit" v-if="!fnGetLoading" color="orange" dark>Login</v-btn>
                     <v-progress-circular
                     v-if="fnGetLoading"
                     indeterminate
@@ -64,3 +64,8 @@ export default {
      }
 };
 </script>
+<style>
+    .email, .inputFields {
+        color: white;
+    }
+</style>
