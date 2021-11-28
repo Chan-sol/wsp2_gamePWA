@@ -12,18 +12,39 @@ const router = new VueRouter({
   routes: [
     {
         path: '/', name:'start_page',
-        component: () => import('./components/start_page.vue')
+        components: {
+            default: () => import('./components/start_page.vue'),
+            sidebar: () => import('./components/NavigationBar_components/start_page_nav.vue'),
+        },
     },
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
 
     // login 관련 path
     {
         // 구글 로그인 + 이메일 로그인 + 회원가입
         path: '/first', name:'first_page',
+<<<<<<< Updated upstream
         component: () => import('./components/login_components/first_page.vue')
     },
     {
         path: '/main', name:'main_page',
         component: () => import('./components/login_components/main_page.vue'),
+=======
+        components: {
+            default: () => import('./components/login_components/first_page.vue'),
+            sidebar: () => import('./components/NavigationBar_components/first_page_nav.vue'),
+        }
+    },
+    {
+        path: '/main', name:'main_page',
+        components: {
+            default: () => import('./components/login_components/main_page.vue'),
+        },
+>>>>>>> Stashed changes
         // loginMain 페이지는 인증과 연동
         meta: { bAuth: true }
     },
@@ -37,6 +58,30 @@ const router = new VueRouter({
     },
 
     // game 관련 path
+<<<<<<< Updated upstream
+=======
+    {
+        path: '/gameSelect', name:'gameSelect_page',
+        components: {
+            default: () => import('./components/game_components/gameSelect_page.vue'),
+            sidebar: () => import('./components/NavigationBar_components/gameSelect_page_nav.vue'),
+        }
+        
+    },
+    {
+        path: '/numberBaseball', name:'numberBaseball_game',
+        component: () => import('./components/game_components/numberBaseball_game.vue')
+    },
+    // {
+    //     path: '/game2', name:'game2_page',
+    //     component: () => import('./components/game_components/game2_page.vue')
+    // },
+    // {
+    //     path: '/game3', name:'game3_page',
+    //     component: () => import('./components/game_components/game3_page.vue')
+    // },
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
     {
         path: '/gameSelect', name:'gameSelect_page',
         component: () => import('./components/game_components/gameSelect_page.vue')
