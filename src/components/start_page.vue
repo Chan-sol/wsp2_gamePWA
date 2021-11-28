@@ -103,18 +103,11 @@
         </div>
         <div class="buttonOff">
             <h1 class="title white--text">Press to start (Offline.ver)</h1>
-<<<<<<< Updated upstream
-            <v-btn fab large class="mt-5" color="#fe4063" dark to="/gameselect"></v-btn>
-=======
             <v-btn fab large class="mt-5" color="#fe4063" @click="fnDoLogoutAndGameSelect"></v-btn>
->>>>>>> Stashed changes
         </div>
     </v-container>
 </template>
 <script>
-<<<<<<< Updated upstream
-</script>
-=======
 export default {
     computed: {
       fnGetAuthStatus() {
@@ -130,6 +123,4 @@ export default {
     },
 }
 </script>
-
->>>>>>> Stashed changes
 <style src="./css/start_page_ani.css"></style>
