@@ -6,6 +6,56 @@
     height: 100%;
     margin-bottom: 35px;
 }
+#state
+{
+    margin-bottom: 10px;
+    color:rgb(238, 28, 133);
+    text-shadow: 2px 2px 2px pink;
+}
+.times
+{
+    color: gray;
+    background-color: white;
+    border-radius: 25px;
+    margin-right: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 85px;
+    height: 20px;
+}
+.start
+{
+    font-weight: bold;
+    color: rgb(238, 28, 133);
+    background-color: white;
+    border-radius: 25px;
+    margin-right: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 85px;
+    height: 20px;
+}
+.start:hover{
+    background-color: black;
+    border-radius: 25px;
+}
+.times:hover
+{
+    background-color: black;
+    border-radius: 25px;
+}
+.bomb
+{
+    background-color: white;
+    color: hotpink;
+    border-radius: 40px;
+    width: 50px;
+    height: 40px;
+    margin-left: 140px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
 #enter
 {
     color: white;
@@ -24,8 +74,8 @@
     border-radius: 80px;
     margin-left: 10px;
     margin-top: 10px;
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
 }
 #btn:hover
 {
@@ -49,9 +99,10 @@
 .ForLogo
 {
     display: block;
-    width: 33%;
+    width: 13% 13%;
     margin: 0 auto;
     margin-bottom: 15px;
+    max-width: 280px;
 }
 
 #bold

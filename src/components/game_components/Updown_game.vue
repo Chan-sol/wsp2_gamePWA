@@ -15,6 +15,12 @@
              </div>
          </div>
     </div>
+    
+    <button @click="stopTimer" class="times">Time stop</button>
+    <button @click="startTimer" class="start">Game start</button>
+    <button @click="resetTimer" class="times">Game reset</button>
+    <h2 class="bomb">{{totalTime}}</h2> 
+    <h4 id="state">{{gameState}}</h4>
 
         <h1>{{result}}</h1>
         <form v-on:submit="onSubmitForm">
@@ -44,11 +50,62 @@ export default {
             id: '',
             life: 5, // initial chances
             score: 100, // initial score is 100
+            timer: null,
+            totalTime: 60,
+            resetButton: false,
+            gameState: 'Click Game start button to play', //initial state before starting game
             imgurl: require("./gameAssets/Updown/images/umbrella_gray.jpg"),
             logo: require("./gameAssets/Updown/images/logo_gray.jpg")
         }
     },
+
     methods: {
+        startTimer: function() {
+            this.timer = setInterval(() => this.countdown(), 1000);
+            this.resetButton = true;
+            this.gameState = `Game started. Type your forecast value`;
+            },
+        stopTimer: function() {
+            clearInterval(this.timer);
+            this.timer = null;
+            this.resetButton = true;
+            this.gameState = 'Game stopped. Click Game start button to resume it';
+            },
+        resetTimer: function() {
+            this.answer = Math.floor(Math.random()*100);
+            this.score = 100;
+            this.life = 5;
+            this.tries = [];
+            this.value = '';
+            this.id = 0;
+            this.totalTime = (1 * 60);
+            clearInterval(this.timer);
+            this.timer = null;
+            this.resetButton = false;
+            this.gameState = `Game reset. Click Game start button to play new game.`;
+            this.$refs.answer.focus();
+            },
+        
+        countdown: function() {
+            if(this.totalTime >= 1) {
+                this.totalTime--;
+            } else {
+                alert(`time over!`);
+                this.answer = Math.floor(Math.random()*100);
+                this.score = 100;
+                this.life = 5;
+                this.tries = [];
+                this.value = '';
+                this.id = 0;
+                this.totalTime = 60;
+                clearInterval(this.timer);
+                this.timer = null;
+                this.resetButton = false;
+                this.gameState = `Game over. Click Game start button to replay`;
+                this.$refs.answer.focus();
+                }
+            },
+
         onSubmitForm(e) {
             e.preventDefault();
             console.log(this.answer);
@@ -62,23 +119,33 @@ export default {
                 this.tries = [];
                 this.value = '';
                 this.id = 0;
+                this.totalTime = 60;
+                clearInterval(this.timer);
+                this.timer = null;
+                this.resetButton = false;
+                this.gameState = `Game over. If you want replay, click Game start button`;
                 this.$refs.answer.focus();
                 }
             if (this.value == this.answer) { //Correct answer, User win
-                temp = this.score;
+                temp = this.score + this.totalTime;
                 this.tries.push({
                     try: this.value,
                     result: `You win! your score is ${temp}`,
                     id: this.id++
                     });
                 //this.result = "You win!";
-                alert(`You win! your score is ${temp}`);
+                alert(`You win! Bonus score is ${this.totalTime}. Final score is ${temp}`);
                 this.answer = Math.floor(Math.random()*100);
                 this.score = 100;
                 this.life = 5;
                 this.tries = [];
                 this.value = '';
                 this.id = 0;
+                this.totalTime = 60;
+                clearInterval(this.timer);
+                this.timer = null;
+                this.resetButton = false;
+                this.gameState = `You win. If you want replay, click Game start button`;
                 this.$refs.answer.focus();
                 } 
             if (this.value == '') { // No input. error message
@@ -115,7 +182,8 @@ export default {
             }
             
         }
-    }
+    },
+ 
 };
 </script>
 
