@@ -33,6 +33,9 @@ export default {
             // 스토어에 구글 계정 로그인 처리 요청
             this.$store.dispatch("fnDoGoogleLogin_Popup"); // actions에 정의되어 있으므로 dispatch() 함수를 사용해 실행
         },
+        fnDoLogout() {
+            this.$store.dispatch('fnDoLogout')
+        },
         fnEmailLoginPage() {
             this.$router.push('/emailLogin')
         },
