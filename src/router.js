@@ -28,9 +28,7 @@ const router = new VueRouter({
     },
     {
         path: '/main', name:'main_page',
-        components: {
-            default: () => import('./components/login_components/main_page.vue'),
-        },
+        component: () => import('./components/login_components/main_page.vue'),
         // loginMain 페이지는 인증과 연동
         meta: { bAuth: true }
     },
@@ -50,7 +48,6 @@ const router = new VueRouter({
             default: () => import('./components/game_components/gameSelect_page.vue'),
             sidebar: () => import('./components/NavigationBar_components/gameSelect_page_nav.vue'),
         }
-        
     },
     {
         path: '/numberBaseball', name:'numberBaseball_game',
