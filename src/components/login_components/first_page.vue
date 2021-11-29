@@ -47,10 +47,6 @@ export default {
         }
     },
     computed: {
-        fnGetLoading() {
-            // 시간 지연 상태 스토어에서 읽어서 반환
-            this.$store.getters.fnGetLoading;
-        },
         fnGetAuthStatus() {
             return this.$store.getters.fnGetAuthStatus
         }
