@@ -34,11 +34,17 @@ const router = new VueRouter({
     },
     {
         path: '/emailLogin', name:'email_Login_page',
-        component: () => import('./components/login_components/email_Login_page.vue')
+        components: {
+            default: () => import('./components/login_components/email_Login_page.vue'),
+            sidebar: () => import('./components/NavigationBar_components/email_page_nav.vue'),
+        },
     },
     {
         path: '/emailRegister', name:'email_Register_page',
-        component: () => import('./components/login_components/email_Register_page.vue')
+        components: {
+            default: () => import('./components/login_components/email_Register_page.vue'),
+            sidebar: () => import('./components/NavigationBar_components/email_page_nav.vue'),
+        },
     },
 
     // game 관련 path

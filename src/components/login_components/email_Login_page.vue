@@ -1,27 +1,16 @@
 <template>
     <v-container>
-        <v-row>
-            <v-col cols="12" class="text-center my-5">
-                <h1 class="display-1 email">Email Login</h1>
-            </v-col>
-        </v-row>
-        <v-row>
-            <v-col class="text-center inputFields" cols="8" offset="2" sm="6" offset-sm="3">
-                <form @submit.prevent="fnDoLogin">
-                    <v-text-field name="Email" label="Email" type="email" v-model="sEmail" required class="white--text"></v-text-field>
-                    <v-text-field name="Password" label="PassWord" type="password" v-model="sPassword" required></v-text-field>
-                    <v-btn type="submit" v-if="!fnGetLoading" color="orange" dark>Login</v-btn>
-                    <v-progress-circular
-                    v-if="fnGetLoading"
-                    indeterminate
-                    :width="7"
-                    :size="70"
-                    color="white darken-1"
-                    ></v-progress-circular>
-                    <v-alert class="mt-3" type="error" dismissible v-model="bAlert">{{ fnGetErrMsg }}</v-alert>
-                </form>
-            </v-col>
-        </v-row>
+        <div class="emailLoginContainer">
+            <h1 class="email"><b>E</b>mail <b>L</b>og<b>i</b>n</h1>
+            <form @submit.prevent="fnDoLogin" class="formContainer">
+                <v-text-field dark color="#fe4063" name="Email" label="Email" type="email" v-model="sEmail" required></v-text-field>
+                <v-text-field dark color="#fe4063" name="Password" label="PassWord" type="password" v-model="sPassword" required></v-text-field>
+                <button type="submit" class="mt-5 btn login">
+                    <v-icon class="mr-2">mdi-login</v-icon>Login
+                </button>
+                <v-alert class="mt-3" type="error" dismissible v-model="bAlert">{{ fnGetErrMsg }}</v-alert>
+            </form>
+        </div>
     </v-container>
 </template>
 <script>
@@ -38,10 +27,6 @@ export default {
          fnGetErrMsg() {
              return this.$store.getters.fnGetErrorMessage;
          },
-         // 시간 지연 상태 스토어에서 읽어서 반환
-         fnGetLoading() {
-             return this.$store.getters.fnGetLoading;
-         }
      },
      methods: {
          // 스토어에서 이메일 로그인 처리 요청
@@ -65,7 +50,98 @@ export default {
 };
 </script>
 <style scoped>
-    .email, .inputFields {
+    @import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+    @import url(https://fonts.googleapis.com/css?family=BenchNine:700);
+
+    .container, .emailLoginContainer {
+        width: 100%;
+        height: 80%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .email {
+        font-family: 'Oswald', sans-serif;
+        font-size: 12vmin;
+        color: #e6ebce;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .formContainer {
+        width: 100%;
+        height: 30vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .v-input {
+        width: 70%;
+    }
+
+    .login {
+        background-color: #fe4063ce;
         color: white;
+    }
+
+    .btn {
+        width: 35vh;
+        border: none;
+        cursor: pointer;
+        display: inline-block;
+        font-family: 'BenchNine', Arial, sans-serif;
+        font-size: 22px;
+        line-height: 1em;
+        outline: none;
+        padding: 12px 40px 10px;
+        position: relative;
+        text-transform: uppercase;
+        font-weight: 700;
+    }
+
+    .btn:before,
+    .btn:after {
+        border-color: transparent;
+        -webkit-transition: all 0.25s;
+        transition: all 0.25s;
+        border-style: solid;
+        border-width: 0;
+        content: "";
+        height: 24px;
+        position: absolute;
+        width: 24px;
+    }
+
+    .btn:before {
+        border-right-width: 2px;
+        border-top-width: 2px;
+        right: -5px;
+        top: -5px;
+    }
+
+    .btn:after {
+        border-bottom-width: 2px;
+        border-left-width: 2px;
+        bottom: -5px;
+        left: -5px;
+    }
+
+    .login:before,
+    .login:after {
+        border-color: #fe4063;
+    }
+
+    .login:hover {
+        background-color: #fe406388;
+    }
+
+    .btn:hover:before,
+    .btn:hover:after {
+        height: 100%;
+        width: 100%;
     }
 </style>

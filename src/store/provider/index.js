@@ -33,29 +33,26 @@ export default {
         // 1. (이메일) 회원 가입 처리
         fnRegisterUser({ commit }, payload) {
             // actions -> mutations로  state 저장 시 commit 사용
-            commit("fnSetLoading", true); // 스토어에 시간 지연으로 상태로 변경
 
             // 파이어베이스에 이메일 회원 생성 및 저장
             firebase.auth().createUserWithEmailAndPassword(payload.pEmail, payload.pPassword)
             .then(pUserInfo => {
                 // 신규 회원 이메일 정보를 스토어에 저장
                 commit("fnSetUser", {
-                    email: pUserInfo.email
+                    name: pUserInfo.user.displayName,
+                    email: pUserInfo.user.email
                 });
-                commit("fnSetLoading", false); // 스토어에 시간 지연 종료로 상태 변경
                 commit("fnSetErrorMessage", "") // 스토어 에러 메시지 초기화
                 router.push("/main"); // 로그인 이후 가야 할 화면으로 이동
             })
             .catch(err => {
                 commit("fnSetErrorMessage", err.message);
-                commit("fnSetLoading", false);
             });
         },
 
         // 2. (이메일) 회원 로그인 처리
         fnDoLogin({ commit }, payload) {
             // actions -> mutations로  state 저장 시 commit 사용
-            commit("fnSetLoading", true); // 스토어에 시간 지연 상태로 변경
 
             // 파이어베이스에 이메일 회원 로그인 인증 처리 요청
             firebase.auth().signInWithEmailAndPassword(payload.pEmail, payload.pPassword)
@@ -67,20 +64,16 @@ export default {
                     email: pUserInfo.user.email,
                     photoURL: pUserInfo.user.photoURL
                 });
-                commit("fnSetLoading", false); // 스토어에 시간 지연 종료로 상태 변경
                 commit("fnSetErrorMessage", "") // 스토어 에러 메시지 초기화
                 router.push("/main"); // 로그인 이후 가야 할 화면으로 이동
             })
             .catch(err => {
                 commit("fnSetErrorMessage", err.message);
-                commit("fnSetLoading", false);
             });
         },
 
         // 3. (구글 계정) 회원 로그인 -> popup
         fnDoGoogleLogin_Popup({ commit }) {
-            commit("fnSetLoading", true); // 스토어에 시간 지연 상태로 변경
-
             // 파이어베이스에 구글 회원 로그인 인증 처리 요청
             // 로그인 제공자 객체를 생성
             var oProvider = new firebase.auth.GoogleAuthProvider();
@@ -98,13 +91,11 @@ export default {
                     email: pUserInfo.user.email,
                     photoURL: pUserInfo.user.photoURL
             });
-                commit("fnSetLoading", false); // 스토어에 시간 지연 종료로 상태 변경
                 commit("fnSetErrorMessage", "") // 스토어 에러 메시지 초기화
                 router.push("/main"); // 로그인 이후 가야 할 화면으로 이동
             })
             .catch(err => {
                 commit("fnSetErrorMessage", err.message);
-                commit("fnSetLoading", false);
             });
         },
 
@@ -117,7 +108,6 @@ export default {
                 email: pUserInfo.user.email,
                 photoURL: pUserInfo.user.photoURL
             });
-            commit("fnSetLoading", false); // 스토어에 시간 지연 종료로 상태 변경
             commit("fnSetErrorMessage", "") // 스토어 에러 메시지 초기화
         },
 
