@@ -44,7 +44,10 @@ const router = new VueRouter({
     // game 관련 path
     {
         path: '/gameSelect', name:'gameSelect_page',
-        component: () => import('./components/game_components/gameSelect_page.vue')
+        components: {
+            default: () => import('./components/game_components/gameSelect_page.vue'),
+            sidebar: () => import('./components/NavigationBar_components/gameSelect_page_nav.vue'),
+        }
     },
     {
         path: '/numberBaseball', name:'numberBaseball_game',

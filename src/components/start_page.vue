@@ -98,13 +98,29 @@
             <div class="fifth_letter05"></div>
         </div>
         <div class="buttonOn">
-            <h1 class="title white--text">Press to start (Online.ver)</h1>
-            <v-btn fab large class="mt-5" color="#e6ebce" dark to="/main"></v-btn>
+            <h1 class="title white--text">Press to start<br>(Online.ver)</h1>
+            <v-btn fab large class="mt-5" color="#e6ebce" dark to="/first"></v-btn>
         </div>
         <div class="buttonOff">
-            <h1 class="title white--text">Press to start (Offline.ver)</h1>
-            <v-btn fab large class="mt-5" color="#fe4063" dark to="/gameSelect"></v-btn>
+            <h1 class="title white--text">Press to start<br>(Offline.ver)</h1>
+            <v-btn fab large class="mt-5" color="#fe4063" @click="fnDoLogoutAndGameSelect"></v-btn>
         </div>
     </v-container>
 </template>
-<style src="./css/start_page_ani.css"></style>
+<script>
+export default {
+    computed: {
+      fnGetAuthStatus() {
+        return this.$store.getters.fnGetAuthStatus
+      }
+    },
+    methods: {
+        fnDoLogoutAndGameSelect() {
+            if(this.fnGetAuthStatus)
+                this.$store.dispatch('fnDoLogout')
+            this.$router.push('/gameSelect')
+        }
+    },
+}
+</script>
+<style scoped src="./css/start_page_ani.css"></style>

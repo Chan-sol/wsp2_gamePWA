@@ -36,4 +36,4 @@
 </template>
 <script>
 </script>
-<style src="./gameCss/gameSelect_page.css"></style>
+<style scoped src="./gameCss/gameSelect_page.css"></style>

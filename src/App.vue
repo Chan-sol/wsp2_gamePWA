@@ -75,11 +75,16 @@ export default {
 }
 </script>
 <style>
-  b {
-    color: #fe4063;
-  }
-
+/* App.vue의 style은 scoped 속성을 걸면 모든 style 태그에 bgColor를 설정해줘야 함 */
   .bgColor {
     background-color: rgb(34, 34, 34);
+  }
+
+ .name {
+    font-weight: bolder;
+  }
+
+  b {
+    color: #fe4063;
   }
 </style>
