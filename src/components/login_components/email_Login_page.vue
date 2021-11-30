@@ -1,6 +1,6 @@
 <template>
     <v-container>
-        <div class="emailLoginContainer">
+        <div v-if="!fnGetAuthStatus" class="emailLoginContainer">
             <h1 class="email"><b>E</b>mail <b>L</b>og<b>i</b>n</h1>
             <form @submit.prevent="fnDoLogin" class="formContainer">
                 <v-text-field dark color="#fe4063" name="Email" label="Email" type="email" v-model="sEmail" required></v-text-field>
@@ -11,6 +11,17 @@
                 <v-alert class="mt-3" type="error" dismissible v-model="bAlert">{{ fnGetErrMsg }}</v-alert>
             </form>
         </div>
+        <div v-else>
+            <div class="buttonContainer">
+                <h1 class="enjoy"><b>E</b>njoy<br>S<b>Q</b>UID G<b>A</b>M<b>E</b></h1>
+                <button @click="fnMainPage()" class="btn main">
+                    <v-icon left color="white">sports_esports</v-icon>Main Page
+                </button>
+                <button @click="fnGameSelectPage()" class="btn menu">
+                    <v-icon left color="white">sports_esports</v-icon>Game Menu
+                </button>
+            </div>
+            </div>
     </v-container>
 </template>
 <script>
@@ -27,15 +38,24 @@ export default {
          fnGetErrMsg() {
              return this.$store.getters.fnGetErrorMessage;
          },
+         fnGetAuthStatus() {
+            return this.$store.getters.fnGetAuthStatus
+        },
      },
      methods: {
-         // 스토어에서 이메일 로그인 처리 요청
-         fnDoLogin() {
-             this.$store.dispatch("fnDoLogin", {
-                 pEmail: this.sEmail,
-                 pPassword: this.sPassword
-             });
-         }
+        // 스토어에서 이메일 로그인 처리 요청
+        fnDoLogin() {
+            this.$store.dispatch("fnDoLogin", {
+                pEmail: this.sEmail,
+                pPassword: this.sPassword
+            });
+        },
+        fnMainPage() {
+            this.$router.push('/main')
+        },
+        fnGameSelectPage() {
+            this.$router.push('/gameSelect')
+        }
      },
      watch: {
          // fnGetErrMsg() 함수가 오류 메시지를 반환하면 오류 메시지 표시
@@ -62,7 +82,7 @@ export default {
         align-items: center;
     }
 
-    .email {
+    .email, .enjoy {
         font-family: 'Oswald', sans-serif;
         font-size: 12vmin;
         color: #e6ebce;
@@ -83,8 +103,21 @@ export default {
         width: 70%;
     }
 
-    .login {
+    .buttonContainer {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .login, .main {
         background-color: #fe4063ce;
+        color: white;
+    }
+
+    .menu {
+        background-color: #008080ce;
         color: white;
     }
 
@@ -96,6 +129,7 @@ export default {
         font-family: 'BenchNine', Arial, sans-serif;
         font-size: 22px;
         line-height: 1em;
+        margin: 15px 40px;
         outline: none;
         padding: 12px 40px 10px;
         position: relative;
@@ -131,12 +165,24 @@ export default {
     }
 
     .login:before,
-    .login:after {
+    .login:after,
+    .main:before,
+    .main:after {
         border-color: #fe4063;
     }
 
-    .login:hover {
+    .menu:before,
+    .menu:after {
+        border-color: #008080;
+    }
+
+    .login:hover,
+    .main:hover {
         background-color: #fe406388;
+    }
+
+    .menu:hover {
+        background-color: #00808088;
     }
 
     .btn:hover:before,
