@@ -46,9 +46,9 @@ export default {
         fnRegisterUser() {
             if(this.fnComparePassword == true) {
                 this.$store.dispatch("fnRegisterUser", {
-                    pName: this.sName,
                     pEmail: this.sEmail,
-                    pPassword: this.sPassword
+                    pPassword: this.sPassword,
+                    pName: this.sName,
                 });
             }
         }
