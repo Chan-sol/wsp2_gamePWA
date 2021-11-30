@@ -17,6 +17,9 @@
             </button>
         </div>
         <div v-else class="buttonContainer Login">
+            <button @click="fnMainPage()" class="btn main">
+                <v-icon left color="white">mdi-home</v-icon>Main Page
+            </button>
             <button @click="fnGameSelectPage()" class="btn menu">
                 <v-icon left color="black">sports_esports</v-icon>Game Menu
             </button>
@@ -41,6 +44,9 @@ export default {
         },
         fnRegisterPage() {
             this.$router.push('/emailRegister')
+        },
+        fnMainPage() {
+            this.$router.push('/main')
         },
         fnGameSelectPage() {
             this.$router.push('/gameSelect')
@@ -101,16 +107,15 @@ export default {
         align-items: center;
     }
 
-    /* 로그인 안 했을 때 버튼들 */
-    .googleLogin {
+    .googleLogin, .main {
         background-color: #fe4063ce;
         color: white;
     }
-    .emailLogin {
+    .emailLogin, .logout {
         background-color: #008080ce;
         color: white;
     }
-    .emailRegister {
+    .emailRegister, .menu {
         background-color: #e6ebcece;
         color: rgb(34, 34, 34);
     }
@@ -159,25 +164,34 @@ export default {
     }
 
     .googleLogin:before,
-    .googleLogin:after {
+    .googleLogin:after,
+    .main:before,
+    .main:after {
         border-color: #fe4063;
     }
     .emailLogin:before,
-    .emailLogin:after {
+    .emailLogin:after,
+    .logout:before,
+    .logout:after {
         border-color: #008080;
     }
     .emailRegister:before,
-    .emailRegister:after {
+    .emailRegister:after,
+    .menu:before,
+    .menu:after {
         border-color: #e6ebce;
     }
 
-    .googleLogin:hover {
+    .googleLogin:hover,
+    .main:hover {
         background-color: #fe406388;
     }
-    .emailLogin:hover {
+    .emailLogin:hover,
+    .logout:hover {
         background-color: #00808088;
     }
-    .emailRegister:hover {
+    .emailRegister:hover,
+    .menu:hover {
         background-color: #e6ebce88;
     }
 
@@ -198,31 +212,5 @@ export default {
         color: #e6ebce;
         margin-top: 10px;
         margin-bottom: 30px;
-    }
-
-    /* 로그인 했을 때 버튼들 */
-    .menu {
-        background-color: #e6ebcece;
-        color: rgb(34, 34, 34);
-    }
-    .logout {
-        background-color: #008080ce;
-        color: white;
-    }
-
-    .menu:before,
-    .menu:after {
-        border-color: #e6ebce;
-    }
-    .logout:before,
-    .logout:after {
-        border-color: #008080;
-    }
-
-    .menu:hover {
-        background-color: #e6ebce88;
-    }
-    .logout:hover {
-        background-color: #00808088;
     }
 </style>
