@@ -6,7 +6,8 @@
           <v-list v-if="fnGetAuthStatus">
             <v-list-item>
               <v-list-item-avatar>
-                <v-img :src="fnGetUser.photoURL"></v-img>
+                <v-img v-if="fnGetUser.photoURL" :src="fnGetUser.photoURL"></v-img>
+                <v-img v-else src="./assets/Image/user.png"></v-img>
               </v-list-item-avatar>
             </v-list-item>
             <v-list-item>

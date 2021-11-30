@@ -38,12 +38,11 @@ export default {
             firebase.auth().createUserWithEmailAndPassword(payload.pEmail, payload.pPassword)
             .then(pUserInfo => {
                 // 신규 회원 이메일 정보를 스토어에 저장
-                commit("fnSetUser", {
-                    name: pUserInfo.user.displayName,
-                    email: pUserInfo.user.email
+                pUserInfo.user.updateProfile({
+                    displayName: payload.pName,
                 });
                 commit("fnSetErrorMessage", "") // 스토어 에러 메시지 초기화
-                router.push("/main"); // 로그인 이후 가야 할 화면으로 이동
+                router.push("/first"); // 로그인 이후 가야 할 화면으로 이동
             })
             .catch(err => {
                 commit("fnSetErrorMessage", err.message);
@@ -76,13 +75,13 @@ export default {
         fnDoGoogleLogin_Popup({ commit }) {
             // 파이어베이스에 구글 회원 로그인 인증 처리 요청
             // 로그인 제공자 객체를 생성
-            var oProvider = new firebase.auth.GoogleAuthProvider();
+            var gProvider = new firebase.auth.GoogleAuthProvider();
 
             // 오픈 계정의 범위 설정 (아래 두 가지 정보를 사용해도 되는지 user에게 요청)
-            oProvider.addScope("profile");
-            oProvider.addScope("email");
+            gProvider.addScope("profile");
+            gProvider.addScope("email");
 
-            firebase.auth().signInWithPopup(oProvider)
+            firebase.auth().signInWithPopup(gProvider)
             .then(pUserInfo => {
                 // 로그인에 성공하면 스토어에 계정 정보 저장
                 commit("fnSetUser", {
