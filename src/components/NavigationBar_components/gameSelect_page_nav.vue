@@ -22,7 +22,7 @@ export default {
             {
               title: 'Main Page',
               to: '/main',
-              icon: 'mdi-launch'
+              icon: 'mdi-home'
             }
           ]
         }
