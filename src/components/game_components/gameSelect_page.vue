@@ -1,7 +1,7 @@
 <template>
     <div>
         <v-content>
-            <p class="game_name">Game 1</p>
+            <p class="game_name">Puzzle</p>
             <v-divider></v-divider>
             <p class="game_description">This is our game 1.</p>
             <div class="game_button">
@@ -12,9 +12,9 @@
         </v-content>
         <v-divider></v-divider>
         <v-content>
-            <p class="game_name">Game 2</p>
+            <p class="game_name">Updown Game</p>
             <v-divider></v-divider>
-            <p class="game_description">This is our game 2.</p>
+            <p class="game_description">This is a game that the user guesses the random number. When the user enters the estimated value, it tells whether it is greater or less than the answer.</p>
             <div class="game_button">
             <v-btn fab large class="mt-5" color="#fe4063" dark to="/Updown">
                 <v-icon>change_history</v-icon>
@@ -23,7 +23,7 @@
         </v-content>
         <v-divider></v-divider>
         <v-content>
-            <p class="game_name">Game 3</p>
+            <p class="game_name">MukChiPa</p>
             <v-divider></v-divider>
             <p class="game_description">This is our game 3.</p>
             <div class="game_button">

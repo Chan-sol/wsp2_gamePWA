@@ -1,5 +1,5 @@
 @charset "utf-8";
-@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Aldrich&display=swap');
 
 .entire {
     background-color: black;
@@ -8,12 +8,27 @@
 *{ padding: 0; margin: 0; }
 
 @media ( max-width: 767px ) {
-    html {font-size: 9px;}
+    .buttonOn {font-size: 8px;
+    margin-top: 10rem;
+    margin-left: 1rem;
+    }
+    .buttonOff {font-size: 8px;
+    margin-top: 10rem;
+    margin-left: 15rem;
+    }
     .gif{display: block;}
     .canvas{display: none;}
 }
 @media ( min-width: 768px ) {
     .gif{display: none;}
+    .buttonOn {font-size: 14px;
+    margin-top: 27rem;
+    margin-left: 22rem;
+    }
+    .buttonOff {font-size: 14px;
+    margin-top: 27rem;
+    margin-left: 60rem;
+    }
 }
 
 .gif {
@@ -23,18 +38,14 @@
 
 .buttonOn {
     position: fixed;
-    margin-top: 30%;
-    margin-left: 13%;
     text-align: center;
-    font-family: 'Righteous', cursive;
+    font-family: 'Aldrich', sans-serif;
 }
 
 .buttonOff {   
     position: fixed;
-    margin-top: 30%;
-    margin-left: 70%;
     text-align: center;
-    font-family: 'Righteous', cursive;
+    font-family: 'Aldrich', sans-serif;
 }
 
 .canvas{

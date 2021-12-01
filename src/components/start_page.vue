@@ -99,11 +99,11 @@
             <div class="fifth_letter05"></div>
         </div>
         <div class="buttonOn">
-            <h1 class="title white--text">Press to start<br>(Online.ver)</h1>
+            <h1 class="white--text">Press to start<br>(Online.ver)</h1>
             <v-btn fab large class="mt-5" color="#e6ebce" dark to="/first"></v-btn>
         </div>
         <div class="buttonOff">
-            <h1 class="title white--text">Press to start<br>(Offline.ver)</h1>
+            <h1 class="white--text">Press to start<br>(Offline.ver)</h1>
             <v-btn fab large class="mt-5" color="#fe4063" @click="fnDoLogoutAndGameSelect"></v-btn>
         </div>
     </v-container>
