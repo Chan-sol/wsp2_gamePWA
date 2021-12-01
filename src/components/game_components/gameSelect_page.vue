@@ -1,7 +1,7 @@
 <template>
     <div>
         <v-content>
-            <p class="display-1 my-4 game_name">Game 1</p>
+            <p class="game_name">Game 1</p>
             <v-divider></v-divider>
             <p class="game_description">This is our game 1.</p>
             <div class="game_button">
@@ -12,7 +12,7 @@
         </v-content>
         <v-divider></v-divider>
         <v-content>
-            <p class="display-1 my-4 game_name">Game 2</p>
+            <p class="game_name">Game 2</p>
             <v-divider></v-divider>
             <p class="game_description">This is our game 2.</p>
             <div class="game_button">
@@ -23,7 +23,7 @@
         </v-content>
         <v-divider></v-divider>
         <v-content>
-            <p class="display-1 my-4 game_name">Game 3</p>
+            <p class="game_name">Game 3</p>
             <v-divider></v-divider>
             <p class="game_description">This is our game 3.</p>
             <div class="game_button">

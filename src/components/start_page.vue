@@ -15,7 +15,7 @@
             <!-- 삼각형 -->
             <svg class="tri">
                 <polygon points="145,25 268,238 22,238" />
-            </svg>
+            </svg>g
             <div class="black"></div>
             <svg class="tri02">
                 <polygon points="145,25 268,238 22,238" />
