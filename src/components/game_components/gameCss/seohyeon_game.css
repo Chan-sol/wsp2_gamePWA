@@ -13,7 +13,23 @@
     height: 700px;
     float : left;
 }
- #btn{
+
+/* 추가한 부분 여기서부터 */
+.rock {
+    background: url(../gameAssets/mukchipa/rfinalojing.png) 0 0;
+}
+
+.scissors {
+    background: url(../gameAssets/mukchipa/rfinalojing.png) -313px 0;
+}
+
+.paper {
+    background: url(../gameAssets/mukchipa/rfinalojing.png) -626px 0;
+}
+
+/* 여기까지 */
+
+#btn{
     margin-left: 50px;
 }
 #bgcloud{
