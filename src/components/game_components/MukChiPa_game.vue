@@ -1,5 +1,7 @@
 <template>
     <div id = "bgcloud">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+        <v-container>
         <div id = "computer" :style="computedStyleObject" ></div>
         <div>
             <img v-for="l in life" v-bind:key="l.id"
@@ -13,11 +15,14 @@
             <button id = "ro" v-on:click="onClickButton('바위')"></button>
             <button id = "si" v-on:click="onClickButton('가위')"></button>
             <button id = "pa" v-on:click="onClickButton('보')"></button> 
-        </div>  
+        </div> 
+        </v-container> 
     </div>
 </template>
 
 <script>
+    const path = require('path');
+    path.join(__dirname);
     const rspCoords = {
         바위: '0',
         가위: '-313px',
@@ -36,24 +41,24 @@
 
     let interval = null;
     let leader = 0;
-    let moksum = 3;
+    let moksum = 5;
     export default {
         data(){
             return{
                 imgCoord: rspCoords.바위,
                 result: '게임을 시작하세요!',
                 score: 0,
-                life: 3,
+                life: 5,
                 dead: 0,
                 lifeurl: require("./gameAssets/MukChiPa/dalgona.png"),
                 deadurl: require("./gameAssets/MukChiPa/brokendalgona.png"),
-                ojingurl: require("./gameAssets/MukChiPa/rfinalojing.png"),
             };
         },
         computed:{
             computedStyleObject(){
                 return {
-                    background: `ojingurl ${this.imgCoord} 0`,
+                    background:  `url("./gameAssets/MukChiPa/rfinalojing.png") ${this.imgCoord} 0`,
+
                 };
             }
         },
