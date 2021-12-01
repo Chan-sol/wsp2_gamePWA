@@ -11,7 +11,7 @@
                 <!-- 비밀번호 확인이 맞는지 검사하도록 rules 속성 적용 -->
                 <v-text-field dark color="#fe4063" name="ConfirmPassword" label="Confirm Password" type="password" v-model="sConfirmPassword" required :rules="[fnComparePassword]"></v-text-field>
                 <!-- 시간 지연 상태면 버튼이 사라지게 함 -->
-                <button type="submit" class="mt-5 btn register">
+                <button type="submit" class="mt-5 btn squidRed">
                     <v-icon class="mr-2">mdi-login</v-icon>Register
                 </button>
                 <v-alert type="error" dismissible v-model="bAlert">{{ fnGetErrMsg }}</v-alert>
@@ -67,7 +67,6 @@ export default {
 </script>
 <style scoped>
     @import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
-    @import url(https://fonts.googleapis.com/css?family=BenchNine:700);
 
     .container, .emailRegisterContainer {
         width: 100%;
@@ -88,7 +87,7 @@ export default {
 
     .formContainer {
         width: 100%;
-        height: 30vh;
+        height: 40vh;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -98,66 +97,5 @@ export default {
     .v-input {
         width: 70%;
     }
-
-    .register {
-        background-color: #fe4063ce;
-        color: white;
-    }
-
-    .btn {
-        width: 35vh;
-        border: none;
-        cursor: pointer;
-        display: inline-block;
-        font-family: 'BenchNine', Arial, sans-serif;
-        font-size: 22px;
-        line-height: 1em;
-        outline: none;
-        padding: 12px 40px 10px;
-        position: relative;
-        text-transform: uppercase;
-        font-weight: 700;
-    }
-
-    .btn:before,
-    .btn:after {
-        border-color: transparent;
-        -webkit-transition: all 0.25s;
-        transition: all 0.25s;
-        border-style: solid;
-        border-width: 0;
-        content: "";
-        height: 24px;
-        position: absolute;
-        width: 24px;
-    }
-
-    .btn:before {
-        border-right-width: 2px;
-        border-top-width: 2px;
-        right: -5px;
-        top: -5px;
-    }
-
-    .btn:after {
-        border-bottom-width: 2px;
-        border-left-width: 2px;
-        bottom: -5px;
-        left: -5px;
-    }
-
-    .register:before,
-    .register:after {
-        border-color: #fe4063;
-    }
-
-    .register:hover {
-        background-color: #fe406388;
-    }
-
-    .btn:hover:before,
-    .btn:hover:after {
-        height: 100%;
-        width: 100%;
-    }
 </style>
+<style src="../css/button.css"></style>

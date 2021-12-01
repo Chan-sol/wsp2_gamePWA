@@ -15,13 +15,15 @@ export default {
         return this.$store.getters.fnGetAuthStatus
       },
       fnGetMenuItems() {
-        return [
-          {
-            title: 'Login Page',
-            to: '/first',
-            icon: 'mdi-launch'
-          }
-        ]
+        if(!this.fnGetAuthStatus){
+          return [
+            {
+              title: 'Login Page',
+              to: '/first',
+              icon: 'mdi-launch'
+            }
+          ]
+        }
       },
     }
 }
