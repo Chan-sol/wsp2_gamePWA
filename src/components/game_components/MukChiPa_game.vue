@@ -2,7 +2,7 @@
     <div id = "bgcloud">
     <meta name="viewport" content="width=device-width,initial-scale=1">
         <v-container>
-        <div id = "computer" :style="computedStyleObject" ></div>
+        <div id = "computer" class="rock" ></div>
         <div>
             <img v-for="l in life" v-bind:key="l.id"
             :src="lifeurl" />
@@ -54,22 +54,17 @@
                 deadurl: require("./gameAssets/MukChiPa/brokendalgona.png"),
             };
         },
-        computed:{
-            computedStyleObject(){
-                return {
-                    background:  `url("./gameAssets/MukChiPa/rfinalojing.png") ${this.imgCoord} 0`,
-
-                };
-            }
-        },
         methods: {
             changeHand(){
                 interval = setInterval(() =>{
                 if(this.imgCoord === rspCoords.바위){
+                    document.getElementById('computer').className = 'scissors';
                     this.imgCoord = rspCoords.가위;
                 }else if (this.imgCoord === rspCoords.가위){
+                    document.getElementById('computer').className = 'paper';
                     this.imgCoord = rspCoords.보;
                 }else if (this.imgCoord === rspCoords.보){
+                    document.getElementById('computer').className = 'rock';
                     this.imgCoord = rspCoords.바위;
                 }
             }, 100);
