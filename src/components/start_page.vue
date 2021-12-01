@@ -1,5 +1,6 @@
 <template>
     <v-container fluid fill-height class="entire">
+        <div class="gif"><img width="100%" height="auto" src="../assets/Image/squid.gif"></div>
         <div class="canvas">
             <!-- 상원 -->
             <svg class="c01">
