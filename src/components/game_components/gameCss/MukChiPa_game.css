@@ -1,17 +1,24 @@
 #result{
     font-weight: bold;
-    margin-left:100px;
     font-size: 20pt;
+    color:gray;
+    text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+    max-width:313px;
+    text-align: center;
 }
-#nowscore{
-    font-weight: bolder;
-    margin-left:100px;
-    font-size: 30pt;
+#accent{
+    color:azure;
+    font-size: 15pt;
+    text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+    max-width:313px;
+    text-align: right;
 }
 #computer{
+    margin-left: 5px;
     width: 313px;
-    height: 700px;
+    height: 413px;
     float : left;
+    margin-bottom: 10px;
 }
 .rock {
     background: url(../gameAssets/MukChiPa/rfinalojing.png) 0 0;
@@ -23,9 +30,6 @@
 
 .paper {
     background: url(../gameAssets/MukChiPa/rfinalojing.png) -626px 0;
-}
- #btn{
-    margin-left: 50px;
 }
 #bgcloud{
     width: 100%;
@@ -40,6 +44,7 @@
     width: 100px;
     height: 100px;
     border-radius: 15px;
+    margin-left: 5px;
 }
 #si{
     background: url( "./../gameAssets/MukChiPa/si.png" ) no-repeat;
@@ -47,6 +52,7 @@
     width: 100px;
     height: 100px;
     border-radius: 15px;
+    margin-left: 5px;
 }
 #pa{
     background: url( "./../gameAssets/MukChiPa/pa.png" ) no-repeat;
@@ -54,4 +60,5 @@
     width: 100px;
     height: 100px;
     border-radius: 15px;
+    margin-left: 5px;
 }
