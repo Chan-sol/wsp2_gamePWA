@@ -38,8 +38,9 @@
             </v-container>
         </div>
 </template>
-
 <script>
+import * as rMod from "../ranking_components/ranking";
+
 export default {
     data() {
         return {
@@ -113,6 +114,11 @@ export default {
 
             if (this.life == 0) { // game end, User lose
                 alert(`Game over! your score is 0, the answer was ${this.answer}`);
+                // ranking
+                if(this.fnGetAuthStatus) {
+                    rMod.writeUserGameData('upDown_game', this.fnGetUser.id, this.fnGetUser.name, 0);
+                }
+
                 this.answer = Math.floor(Math.random()*100);
                 this.score = 100;
                 this.life = 5;
@@ -183,7 +189,15 @@ export default {
             
         }
     },
- 
+    computed: {
+        fnGetAuthStatus() {
+        return this.$store.getters.fnGetAuthStatus
+      },
+      fnGetUser() {
+          let oUserInfo = this.$store.getters.fnGetUser;
+          return oUserInfo;
+      }
+    }
 };
 </script>
 
