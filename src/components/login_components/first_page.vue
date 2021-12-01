@@ -4,26 +4,26 @@
             <img class="logoImg" src="./loginImage/logo.png">
         </div>
         <div v-if="!fnGetAuthStatus" class="buttonContainer notLogin">
-            <button @click="fnDoGoogleLogin_Popup" class="btn googleLogin">
+            <button @click="fnDoGoogleLogin_Popup" class="btn squidRed">
                 <v-icon left color="white">mdi-google</v-icon>Google Login
             </button>
-            <button @click="fnEmailLoginPage" class="btn emailLogin">
+            <button @click="fnEmailLoginPage" class="btn squidGreen">
                 <v-icon left color="white">mdi-email</v-icon>Email Login
             </button>
             <hr color="#e6ebce" class="hr">
             <span class="des">Didn't you sign up yet?</span>
-            <button @click="fnRegisterPage" class="btn emailRegister">
+            <button @click="fnRegisterPage" class="btn squidWhite">
                 <v-icon left color="black">mdi-pencil</v-icon>Email Register
             </button>
         </div>
         <div v-else class="buttonContainer Login">
-            <button @click="fnMainPage()" class="btn main">
+            <button @click="fnMainPage()" class="btn squidRed">
                 <v-icon left color="white">mdi-home</v-icon>Main Page
             </button>
-            <button @click="fnGameSelectPage()" class="btn menu">
+            <button @click="fnGameSelectPage()" class="btn squidWhite">
                 <v-icon left color="black">sports_esports</v-icon>Game Menu
             </button>
-            <button @click="fnDoLogout" class="btn logout">
+            <button @click="fnDoLogout" class="btn squidGreen">
                 <v-icon left color="white">mdi-login</v-icon>Logout
             </button>
         </div>
@@ -60,8 +60,6 @@ export default {
 }
 </script>
 <style scoped>
-    @import url(https://fonts.googleapis.com/css?family=BenchNine:700);
-
     @keyframes logoAnimation {
         from {
             opacity:1;
@@ -98,109 +96,7 @@ export default {
         animation-iteration-count: infinite;
         animation-direction: alternate;
     }
-
-    .buttonContainer {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .googleLogin, .main {
-        background-color: #fe4063ce;
-        color: white;
-    }
-    .emailLogin, .logout {
-        background-color: #008080ce;
-        color: white;
-    }
-    .emailRegister, .menu {
-        background-color: #e6ebcece;
-        color: rgb(34, 34, 34);
-    }
-
-    .btn {
-        width: 35vh;
-        border: none;
-        cursor: pointer;
-        display: inline-block;
-        font-family: 'BenchNine', Arial, sans-serif;
-        font-size: 22px;
-        line-height: 1em;
-        margin: 15px 40px;
-        outline: none;
-        padding: 12px 40px 10px;
-        position: relative;
-        text-transform: uppercase;
-        font-weight: 700;
-    }
-
-    .btn:before,
-    .btn:after {
-        border-color: transparent;
-        -webkit-transition: all 0.25s;
-        transition: all 0.25s;
-        border-style: solid;
-        border-width: 0;
-        content: "";
-        height: 24px;
-        position: absolute;
-        width: 24px;
-    }
-
-    .btn:before {
-        border-right-width: 2px;
-        border-top-width: 2px;
-        right: -5px;
-        top: -5px;
-    }
-
-    .btn:after {
-        border-bottom-width: 2px;
-        border-left-width: 2px;
-        bottom: -5px;
-        left: -5px;
-    }
-
-    .googleLogin:before,
-    .googleLogin:after,
-    .main:before,
-    .main:after {
-        border-color: #fe4063;
-    }
-    .emailLogin:before,
-    .emailLogin:after,
-    .logout:before,
-    .logout:after {
-        border-color: #008080;
-    }
-    .emailRegister:before,
-    .emailRegister:after,
-    .menu:before,
-    .menu:after {
-        border-color: #e6ebce;
-    }
-
-    .googleLogin:hover,
-    .main:hover {
-        background-color: #fe406388;
-    }
-    .emailLogin:hover,
-    .logout:hover {
-        background-color: #00808088;
-    }
-    .emailRegister:hover,
-    .menu:hover {
-        background-color: #e6ebce88;
-    }
-
-    .btn:hover:before,
-    .btn:hover:after {
-        height: 100%;
-        width: 100%;
-    }
-
+    
     .hr {
         width: 350px;
         margin-top: 40px;
@@ -214,3 +110,4 @@ export default {
         margin-bottom: 30px;
     }
 </style>
+<style src="../css/button.css"></style>

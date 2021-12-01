@@ -5,7 +5,7 @@
             <form @submit.prevent="fnDoLogin" class="formContainer">
                 <v-text-field dark color="#fe4063" name="Email" label="Email" type="email" v-model="sEmail" required></v-text-field>
                 <v-text-field dark color="#fe4063" name="Password" label="PassWord" type="password" v-model="sPassword" required></v-text-field>
-                <button type="submit" class="mt-5 btn login">
+                <button type="submit" class="mt-5 btn squidRed">
                     <v-icon class="mr-2">mdi-login</v-icon>Login
                 </button>
                 <v-alert class="mt-3" type="error" dismissible v-model="bAlert">{{ fnGetErrMsg }}</v-alert>
@@ -14,10 +14,10 @@
         <div v-else>
             <div class="buttonContainer">
                 <h1 class="enjoy"><b>E</b>njoy<br>S<b>Q</b>UID G<b>A</b>M<b>E</b></h1>
-                <button @click="fnMainPage()" class="btn main">
-                    <v-icon left color="white">sports_esports</v-icon>Main Page
+                <button @click="fnMainPage()" class="btn squidRed">
+                    <v-icon left color="white">mdi-home</v-icon>Main Page
                 </button>
-                <button @click="fnGameSelectPage()" class="btn menu">
+                <button @click="fnGameSelectPage()" class="btn squidGreen">
                     <v-icon left color="white">sports_esports</v-icon>Game Menu
                 </button>
             </div>
@@ -71,7 +71,6 @@ export default {
 </script>
 <style scoped>
     @import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
-    @import url(https://fonts.googleapis.com/css?family=BenchNine:700);
 
     .container, .emailLoginContainer {
         width: 100%;
@@ -102,92 +101,5 @@ export default {
     .v-input {
         width: 70%;
     }
-
-    .buttonContainer {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .login, .main {
-        background-color: #fe4063ce;
-        color: white;
-    }
-
-    .menu {
-        background-color: #008080ce;
-        color: white;
-    }
-
-    .btn {
-        width: 35vh;
-        border: none;
-        cursor: pointer;
-        display: inline-block;
-        font-family: 'BenchNine', Arial, sans-serif;
-        font-size: 22px;
-        line-height: 1em;
-        margin: 15px 40px;
-        outline: none;
-        padding: 12px 40px 10px;
-        position: relative;
-        text-transform: uppercase;
-        font-weight: 700;
-    }
-
-    .btn:before,
-    .btn:after {
-        border-color: transparent;
-        -webkit-transition: all 0.25s;
-        transition: all 0.25s;
-        border-style: solid;
-        border-width: 0;
-        content: "";
-        height: 24px;
-        position: absolute;
-        width: 24px;
-    }
-
-    .btn:before {
-        border-right-width: 2px;
-        border-top-width: 2px;
-        right: -5px;
-        top: -5px;
-    }
-
-    .btn:after {
-        border-bottom-width: 2px;
-        border-left-width: 2px;
-        bottom: -5px;
-        left: -5px;
-    }
-
-    .login:before,
-    .login:after,
-    .main:before,
-    .main:after {
-        border-color: #fe4063;
-    }
-
-    .menu:before,
-    .menu:after {
-        border-color: #008080;
-    }
-
-    .login:hover,
-    .main:hover {
-        background-color: #fe406388;
-    }
-
-    .menu:hover {
-        background-color: #00808088;
-    }
-
-    .btn:hover:before,
-    .btn:hover:after {
-        height: 100%;
-        width: 100%;
-    }
 </style>
+<style src="../css/button.css"></style>

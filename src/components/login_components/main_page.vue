@@ -15,10 +15,10 @@
             </div>
         </div>
         <div class="buttonContainer mb-5">
-            <button @click="fnGameSelectPage()" class="btn menu">
+            <button @click="fnGameSelectPage()" class="btn squidWhite">
                 <v-icon left color="black">sports_esports</v-icon>Game Menu
             </button>
-            <button @click="fnDoLogout" class="btn logout">
+            <button @click="fnDoLogout" class="btn squidGreen">
                 <v-icon left color="white">mdi-login</v-icon>Logout
             </button>
         </div>
@@ -46,7 +46,6 @@ export default {
 </script>
 <style scoped>
     @import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
-    @import url(https://fonts.googleapis.com/css?family=BenchNine:700);
 
     .avatar_style {
         /* 사진 이미지 원 모양 */
@@ -68,14 +67,6 @@ export default {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        align-items: center;
-    }
-
-    .buttonContainer {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
         align-items: center;
     }
 
@@ -191,79 +182,5 @@ export default {
             
         }
     }
-
-    /* button 템플릿 */
-    .menu {
-        background-color: #e6ebcece;
-        color: rgb(34, 34, 34);
-    }
-    .logout {
-        background-color: #008080ce;
-        color: white;
-    }
-
-    .btn {
-        width: 35vh;
-        border: none;
-        cursor: pointer;
-        display: inline-block;
-        font-family: 'BenchNine', Arial, sans-serif;
-        font-size: 22px;
-        line-height: 1em;
-        margin: 15px 40px;
-        outline: none;
-        padding: 12px 40px 10px;
-        position: relative;
-        text-transform: uppercase;
-        font-weight: 700;
-    }
-
-    .btn:before,
-    .btn:after {
-        border-color: transparent;
-        -webkit-transition: all 0.25s;
-        transition: all 0.25s;
-        border-style: solid;
-        border-width: 0;
-        content: "";
-        height: 24px;
-        position: absolute;
-        width: 24px;
-    }
-
-    .btn:before {
-        border-right-width: 2px;
-        border-top-width: 2px;
-        right: -5px;
-        top: -5px;
-    }
-
-    .btn:after {
-        border-bottom-width: 2px;
-        border-left-width: 2px;
-        bottom: -5px;
-        left: -5px;
-    }
-
-    .menu:before,
-    .menu:after {
-        border-color: #e6ebce;
-    }
-    .logout:before,
-    .logout:after {
-        border-color: #008080;
-    }
-
-    .menu:hover {
-        background-color: #e6ebce88;
-    }
-    .logout:hover {
-        background-color: #00808088;
-    }
-
-    .btn:hover:before,
-    .btn:hover:after {
-        height: 100%;
-        width: 100%;
-    }
 </style>
+<style src="../css/button.css"></style>
