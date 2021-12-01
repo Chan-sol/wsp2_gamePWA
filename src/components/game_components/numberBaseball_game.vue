@@ -39,10 +39,10 @@
 		<div id="custom-image">
 			<label for="custom-image-input">Custom Image:</label>
 			<select v-model="imageSelect" name="imageSelect" id="imageSelect">
-				<option value="./gameAssets/numberBaseball/Image/puzzle1.jpeg">깐부토끼1</option>
-				<option value="./gameAssets/numberBaseball/Image/puzzle2.jpeg">깐부토끼2</option>
-				<option value="./gameAssets/numberBaseball/Image/puzzle3.jpeg">깐부토끼3</option>
-				<option value="./gameAssets/numberBaseball/Image/puzzle4.jpeg">깐부토끼4</option>
+				<option value="./gameAssets/numberBaseball/puzzle1.jpeg">깐부토끼1</option>
+				<option value="./gameAssets/numberBaseball/puzzle2.jpeg">깐부토끼2</option>
+				<option value="./gameAssets/numberBaseball/puzzle3.jpeg">깐부토끼3</option>
+				<option value="./gameAssets/numberBaseball/puzzle4.jpeg">깐부토끼4</option>
 			</select>
 			
 			<input v-if="imageSelect === `custom`" @click="highlightInput" v-model="customImage" id="custom-image-input" type="text"/>
@@ -78,7 +78,6 @@
 	</aside>
 </div>
 </template>
-
 <script>
     export default{			
 			data() {
@@ -91,8 +90,8 @@
 					showNumbers: false,
 					invertNumbers: false,
 					dimTiles: false,
-					imageSelect: './image/puzzle1.jpeg',
-					customImage: './image/puzzle4.jpeg',
+					imageSelect: './gameAssets/numberBaseball/puzzle1.jpeg',
+					customImage: './gameAssets/numberBaseball/puzzle4.jpeg',
 					showSolution: true,
 					gameStarted: false
 				}
