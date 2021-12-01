@@ -124,4 +124,5 @@ export default {
     },
 }
 </script>
-<style scoped src="./css/start_page_ani.css"></style>
+<style scoped src="./css/start_page_ani.css">
+</style>

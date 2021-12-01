@@ -5,7 +5,7 @@
             <v-divider></v-divider>
             <p class="game_description">This is our game 1.</p>
             <div class="game_button">
-            <v-btn fab large class="mt-5" color="black" dark to="/numberBaseball">
+            <v-btn fab large class="mt-5" color="#fe4063" dark to="/numberBaseball">
                 <v-icon>radio_button_unchecked</v-icon>
             </v-btn>
             </div>
@@ -16,7 +16,7 @@
             <v-divider></v-divider>
             <p class="game_description">This is our game 2.</p>
             <div class="game_button">
-            <v-btn fab large class="mt-5" color="black" dark to="/Updown">
+            <v-btn fab large class="mt-5" color="#fe4063" dark to="/Updown">
                 <v-icon>change_history</v-icon>
             </v-btn>
             </div>
@@ -27,7 +27,7 @@
             <v-divider></v-divider>
             <p class="game_description">This is our game 3.</p>
             <div class="game_button">
-            <v-btn fab large class="mt-5" color="black" dark to="/game3">
+            <v-btn fab large class="mt-5" color="#fe4063" dark to="/game3">
                 <v-icon>check_box_outline_blank</v-icon>
             </v-btn>
             </div>
@@ -36,4 +36,5 @@
 </template>
 <script>
 </script>
-<style scoped src="./gameCss/gameSelect_page.css"></style>
+<style scoped src="./gameCss/gameSelect_page.css">
+</style>

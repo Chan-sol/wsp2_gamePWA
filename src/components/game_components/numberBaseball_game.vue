@@ -1,7 +1,5 @@
 <template>
     <div id="board">
-
-	
         <div id="game-group">
             <form @click="handleClick" :aria-label="`${howManyCorrect} of ${ratioSquared} tiles correctly placed.`" :class="{dim: dimTiles, invertNumbers: invertNumbers, showNumbers: showNumbers}">
                 <transition-group name="slide" id="innerBoard" tag="div" :style="{gridTemplateColumns: `repeat(${ratio}, 1fr)`, gridTemplateColumns: `repeat(${ratio}, 1fr)`}">

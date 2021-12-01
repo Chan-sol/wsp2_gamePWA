@@ -1,12 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&family=Titan+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+
 .game_name {
     color: #fe4063;
     margin-left: 5%;
+    font-family: 'Titan One', cursive;
 }
 
 .game_description {
     color: rgb(255, 255, 255);
     margin-left: 7%;
     margin-top: 2vh;
+    font-family: 'Roboto Condensed', sans-serif;
 }
 
 .game_button {
