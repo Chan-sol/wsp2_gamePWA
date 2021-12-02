@@ -1,6 +1,8 @@
 <template>
     <div id = "bgcloud">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <v-container fill-height fluid>
+        <v-col justify="center" align ="center">
         <div style = "max-width:313px">
             <img v-for="l in life" v-bind:key="l.id"
             :src="lifeurl" 
@@ -15,7 +17,9 @@
             <button id = "ro" v-on:click="onClickButton('바위')"></button>
             <button id = "si" v-on:click="onClickButton('가위')"></button>
             <button id = "pa" v-on:click="onClickButton('보')"></button> 
-        </div> 
+        </div>
+        </v-col>
+    </v-container> 
     </div>
 </template>
 
