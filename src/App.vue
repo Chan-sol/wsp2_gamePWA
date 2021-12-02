@@ -29,6 +29,12 @@
               </v-list-item-action>
               <v-list-item-title>Logout</v-list-item-title>
             </v-list-item>
+            <v-list-item to="/end">
+              <v-list-item-action>
+                <v-icon>mdi-exit</v-icon>
+              </v-list-item-action>
+              <v-list-item-title>Exit</v-list-item-title>
+            </v-list-item>
           </v-list>
         </div>
         <v-list>
