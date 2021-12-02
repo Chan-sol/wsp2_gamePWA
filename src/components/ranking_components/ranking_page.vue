@@ -111,6 +111,8 @@ export default {
             // 오름차순 순위면 앞으로 쌓기 (unshift) => upDown, Mukchipa
             // 내림차순 순위면 뒤로 쌓기 (push) => puzzle
         });
+
+        console.log(this.userCurrentScore);
     },
     methods: {
         fnUserGameData() {

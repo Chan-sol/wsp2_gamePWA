@@ -21,6 +21,10 @@ function recordNewRank(game, userId, name, score) {
     });
 }
 
+function recordCurrentScore(score) {
+    currentScore = score;
+}
+
 let userHighScore;
 function readUserHighScore(game, userId) {
     squidDatabase.ref(game + '/' + userId).on('value', (snapshot) => {
@@ -48,4 +52,4 @@ function readUserHighScore(game, userId) {
 //     }
 // }
 
-export { recordNewRank, detectGame, gStatus, currentScore, readUserHighScore };
+export { recordNewRank, recordCurrentScore, detectGame, gStatus, currentScore, readUserHighScore };

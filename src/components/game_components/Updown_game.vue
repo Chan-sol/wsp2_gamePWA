@@ -89,6 +89,8 @@ export default {
                 // ranking
                 if(this.fnGetAuthStatus) {
                     rMod.recordNewRank('upDown_game', this.fnGetUser.id, this.fnGetUser.name, 0);
+                } else {
+                    rMod.recordCurrentScore(temp);
                 }
                 rMod.detectGame(false, true, false);
                 this.$router.push('/rankingPage');
@@ -118,6 +120,8 @@ export default {
                 // ranking
                 if(this.fnGetAuthStatus) {
                     rMod.recordNewRank('upDown_game', this.fnGetUser.id, this.fnGetUser.name, 0);
+                } else {
+                    rMod.recordCurrentScore(temp);
                 }
                 rMod.detectGame(false, true, false);
                 this.$router.push('/rankingPage');
@@ -147,6 +151,8 @@ export default {
                 // ranking
                 if(this.fnGetAuthStatus) {
                     rMod.recordNewRank('upDown_game', this.fnGetUser.id, this.fnGetUser.name, temp);
+                } else {
+                    rMod.recordCurrentScore(temp);
                 }
                 rMod.detectGame(false, true, false);
                 this.$router.push('/rankingPage');
