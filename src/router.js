@@ -63,11 +63,10 @@ const router = new VueRouter({
          path: '/Updown', name:'Updown_game',
          component: () => import('./components/game_components/Updown_game.vue')
     },
-    // {
-    //     path: '/game3', name:'game3_page',
-    //     component: () => import('./components/game_components/game3_page.vue')
-    // },
-
+    {
+         path: '/MukChiPa', name:'MukChiPa_game',
+         component: () => import('./components/game_components/MukChiPa_game.vue')
+    },
     // ranking 관련 path
     {
         path: '/rankingPage', name:'ranking_page',
