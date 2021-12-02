@@ -70,6 +70,7 @@
 }
 #btn
 {
+    color: white;
     background-color: black;
     border-radius: 80px;
     margin-left: 10px;
@@ -86,6 +87,7 @@
 }
 #try
 {
+    color: white;
     width: 0;
     height: 0;
     border-bottom: 30px solid black;

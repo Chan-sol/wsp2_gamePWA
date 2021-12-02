@@ -22,7 +22,7 @@
                 <input ref="answer" type="text" id="enter" maxlength="4" v-model="value" >
                 <button type="submit" id="btn">Type</button>
             </form>
-            <h3 style="margin-top: 20px"> Tries </h3>
+            <h3 style="margin-top: 20px; color: white"> Tries </h3>
             <div id="try">{{tries.length}}</div>
             <ul>
                 <li v-for="t in tries" v-bind:key="t.id">
