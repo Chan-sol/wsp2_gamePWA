@@ -121,10 +121,14 @@
                         }
                     }else if(leader ===2){
                         if(finalresult===0){
-                            if(moksum === 0){
+                            if(moksum === 1){
                                 clearInterval(interval);
-                                alert('GAME OVER!! RETRY?');
-                                location.reload();
+                                this.life -= 1;
+                                this.dead += 1;
+                                setTimeout(() =>{
+                                    alert('GAME OVER!! RETRY?');
+                                    location.reload();
+                                }, 2500);
                             }
                             else{
                                 this.result = "<LOSE!!> A new game will start in 3 seconds";
