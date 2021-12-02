@@ -67,6 +67,11 @@ const router = new VueRouter({
          path: '/MukChiPa', name:'MukChiPa_game',
          component: () => import('./components/game_components/MukChiPa_game.vue')
     },
+    // ranking 관련 path
+    {
+        path: '/rankingPage', name:'ranking_page',
+        component: () => import('./components/ranking_components/ranking_page.vue'),
+    },
     {
         path: '/end', name:'end_page',
         component: () => import('./components/end_page.vue')
