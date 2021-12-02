@@ -1,5 +1,6 @@
 <template>
     <v-container fluid fill-height class="entire">
+        <div class="gif"><img width="100%" height="auto" src="../assets/Image/squid.gif"></div>
         <div class="canvas">
             <!-- 상원 -->
             <svg class="c01">
@@ -14,7 +15,7 @@
             <!-- 삼각형 -->
             <svg class="tri">
                 <polygon points="145,25 268,238 22,238" />
-            </svg>
+            </svg>g
             <div class="black"></div>
             <svg class="tri02">
                 <polygon points="145,25 268,238 22,238" />
@@ -98,11 +99,11 @@
             <div class="fifth_letter05"></div>
         </div>
         <div class="buttonOn">
-            <h1 class="title white--text">Press to start<br>(Online.ver)</h1>
+            <h1 class="white--text">Press to start<br>(Online.ver)</h1>
             <v-btn fab large class="mt-5" color="#e6ebce" dark to="/first"></v-btn>
         </div>
         <div class="buttonOff">
-            <h1 class="title white--text">Press to start<br>(Offline.ver)</h1>
+            <h1 class="white--text">Press to start<br>(Offline.ver)</h1>
             <v-btn fab large class="mt-5" color="#fe4063" @click="fnDoLogoutAndGameSelect"></v-btn>
         </div>
     </v-container>
@@ -123,4 +124,5 @@ export default {
     },
 }
 </script>
-<style scoped src="./css/start_page_ani.css"></style>
+<style scoped src="./css/start_page_ani.css">
+</style>

@@ -63,10 +63,10 @@ const router = new VueRouter({
          path: '/Updown', name:'Updown_game',
          component: () => import('./components/game_components/Updown_game.vue')
     },
-    // {
-    //     path: '/game3', name:'game3_page',
-    //     component: () => import('./components/game_components/game3_page.vue')
-    // },
+    {
+         path: '/seohyeon', name:'seohyeon_game',
+         component: () => import('./components/game_components/seohyeon_game.vue')
+    },
     {
         path: '/end', name:'end_page',
         component: () => import('./components/end_page.vue')
