@@ -72,16 +72,6 @@ const router = new VueRouter({
     {
         path: '/rankingPage', name:'ranking_page',
         component: () => import('./components/ranking_components/ranking_page.vue'),
-        // children: [ // router 중첩
-        //     {
-        //         path: 'ranking', name: 'ranking',
-        //         component: () => import('./components/ranking_components/ranking.vue')
-        //     }
-        // ]
-    },
-    {
-        path: '/ranking', name: 'ranking',
-        component: () => import('./components/ranking_components/ranking.vue')
     },
     {
         path: '/end', name:'end_page',
