@@ -64,8 +64,13 @@ const router = new VueRouter({
          component: () => import('./components/game_components/Updown_game.vue')
     },
     {
-         path: '/seohyeon', name:'seohyeon_game',
-         component: () => import('./components/game_components/seohyeon_game.vue')
+         path: '/MukChiPa', name:'MukChiPa_game',
+         component: () => import('./components/game_components/MukChiPa_game.vue')
+    },
+    // ranking 관련 path
+    {
+        path: '/rankingPage', name:'ranking_page',
+        component: () => import('./components/ranking_components/ranking_page.vue'),
     },
     {
         path: '/end', name:'end_page',

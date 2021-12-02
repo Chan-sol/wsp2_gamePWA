@@ -1,20 +1,25 @@
 <template>
     <div id = "bgcloud">
-        <!-- <div id = "computer" :style="computedStyleObject" ></div> -->
-        <div id = "computer" class="rock"></div>
-        <div>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <v-container fill-height fluid>
+        <v-col justify="center" align ="center">
+        <div style = "max-width:313px">
             <img v-for="l in life" v-bind:key="l.id"
-            :src="lifeurl" />
+            :src="lifeurl" 
+            style="width:20%"/>
             <img v-for="d in dead" v-bind:key="d.id"
-            :src="deadurl" />
+            :src="deadurl"
+            style="width:20%" />
         </div>
-        <p id = "result">{{result}}</p>
-        <p id = "nowscore">현재 {{score}}점</p> 
-        <div id = "btn">
+        <p id = "result">{{result}} <br><span id = "accent">SCORE: {{score}}</span></p>
+        <div id = "computer" class="rock"></div> 
+        <div id = "btn" style ="max-width:400px">
             <button id = "ro" v-on:click="onClickButton('바위')"></button>
             <button id = "si" v-on:click="onClickButton('가위')"></button>
             <button id = "pa" v-on:click="onClickButton('보')"></button> 
-        </div>  
+        </div>
+        </v-col>
+    </v-container> 
     </div>
 </template>
 
@@ -37,26 +42,19 @@
 
     let interval = null;
     let leader = 0;
-    let moksum = 3;
+    let moksum = 5;
     export default {
         data(){
             return{
                 imgCoord: rspCoords.바위,
-                result: '게임을 시작하세요!',
+                result: 'Start the GAME!',
                 score: 0,
-                life: 3,
+                life: 5,
                 dead: 0,
-                lifeurl: require("./gameAssets/mukchipa/dalgona.png"),
-                deadurl: require("./gameAssets/mukchipa/brokendalgona.png"),
+                lifeurl: require("./gameAssets/MukChiPa/dalgona.png"),
+                deadurl: require("./gameAssets/MukChiPa/brokendalgona.png"),
             };
         },
-        // computed:{
-        //     computedStyleObject(){
-        //         return {
-        //             background: `url(./gameAssets/mukchipa/rfinalojing.png) ${this.imgCoord} 0`
-        //         };
-        //     }
-        // },
         methods: {
             changeHand(){
                 interval = setInterval(() =>{
@@ -79,18 +77,18 @@
                     const cpuScore = scores[computerChoice(this.imgCoord)];
                     const diff = myScore - cpuScore;
                     if (diff === 0){
-                        this.result = '비겼네요. 한번 더!';
+                        this.result = 'One more time';
                         setTimeout(() =>{
                             this.changeHand();
                         }, 1000);
                     }else if ([-1,2].includes(diff)){
-                        this.result = '이겼습니다 주도권은 내가!';
+                        this.result = 'You are the leader';
                         leader = 1;
                         setTimeout(() =>{
                             this.changeHand();
                         }, 2000);
                     }else{
-                        this.result = '졌습니다 주도권은 컴퓨터가!';
+                        this.result = '영희 is the leader';
                         leader =2;
                         setTimeout(() =>{
                             this.changeHand();
@@ -103,19 +101,19 @@
                     const finalresult = myScore2 - cpuScore2;
                     if(leader ===1){
                         if(finalresult===0){
-                            this.result = "최종 승리! 3초 뒤에 새 게임이 시작됩니다";
+                            this.result = "<WIN!!> A new game will start in 3 seconds";
                             this.score += 10;
                             leader = 0;
                             setTimeout(() =>{
                                 this.changeHand();
                             }, 3000);
                         }else if([-1,2].includes(finalresult)){
-                            this.result = "한번 더!";
+                            this.result = "One more time!";
                             setTimeout(() =>{
                                 this.changeHand();
                             }, 1000);
                         }else{
-                            this.result = "주도권을 뺏겼어요!";
+                            this.result = "Change the leader (YOU->영희)";
                             leader=2;
                             setTimeout(() =>{
                                 this.changeHand();
@@ -125,11 +123,11 @@
                         if(finalresult===0){
                             if(moksum === 0){
                                 clearInterval(interval);
-                                alert('GAME OVER!! 다시 시작하겠습니까?');
+                                alert('GAME OVER!! RETRY?');
                                 location.reload();
                             }
                             else{
-                                this.result = "졌어요! 3초 뒤에 새 게임이 시작됩니다";
+                                this.result = "<LOSE!!> A new game will start in 3 seconds";
                                 this.life -= 1;
                                 this.dead += 1;
                                 leader = 0;
@@ -139,13 +137,13 @@
                                 }, 3000);
                             }
                         }else if([-1,2].includes(finalresult)){
-                            this.result = "주도권을 되찾았어요!";
+                            this.result = "Change the leader (영희->YOU)";
                             leader = 1;
                             setTimeout(() =>{
                                 this.changeHand();
                             }, 1000);
                         }else{
-                            this.result = "한번 더!";
+                            this.result = "One more time!";
                             setTimeout(() =>{
                                 this.changeHand();
                             }, 1000);
@@ -163,6 +161,4 @@
     };
 </script>
 
-<style scoped>
-@import "./gameCss/seohyeon_game.css";
-</style>
+<style src="./gameCss/MukChiPa_game.css"></style>
