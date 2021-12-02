@@ -19,6 +19,3 @@ export const squidFirebaseAuth = squidGameApp.auth();
 
 // Get a reference to the database service
 export const squidDatabase = firebase.database(squidGameApp);
-
-// sibal getDatabase가 왜 안되는걸까?
-// var database = firebase.database();

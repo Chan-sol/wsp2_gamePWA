@@ -1,42 +1,37 @@
 <template>
-
-<div class="background">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-    <v-container>
-    <img :src="logo"
-    class="ForLogo" />
-    
-    <div class="row">
-         <div class="small-6 columns text-center">
-             <div style="max-width:350px">
-                 <img v-for="l in life" v-bind:key="l.id"
-                 :src="imgurl"
-                 style="width: 20%" />
-             </div>
-         </div>
-    </div>
-    
-    <button @click="stopTimer" class="times">Time stop</button>
-    <button @click="startTimer" class="start">Game start</button>
-    <button @click="resetTimer" class="times">Game reset</button>
-    <h2 class="bomb">{{totalTime}}</h2> 
-    <h4 id="state">{{gameState}}</h4>
-
-        <h1>{{result}}</h1>
-        <form v-on:submit="onSubmitForm">
-            <input ref="answer" type="text" id="enter" maxlength="4" v-model="value" >
-            <button type="submit" id="btn">Type</button>
-        </form>
-        <h3 style="margin-top: 20px"> Tries </h3>
-        <div id="try">{{tries.length}}</div>
-        <ul>
-            <li v-for="t in tries" v-bind:key="t.id">
-                <div id="bold">{{t.try}}</div>
-                <div>{{t.result}}</div>
+    <div class="background">
+        <v-container>
+            <img :src="logo"
+            class="ForLogo" />
+            <div class="row">
+                <div class="small-6 columns text-center">
+                    <div style="max-width:350px">
+                        <img v-for="l in life" v-bind:key="l.id"
+                        :src="imgurl"
+                        style="width: 20%" />
+                    </div>
+                </div>
+            </div>
+            <button @click="stopTimer" class="times">Time stop</button>
+            <button @click="startTimer" class="start">Game start</button>
+            <button @click="resetTimer" class="times">Game reset</button>
+            <h2 class="bomb">{{totalTime}}</h2> 
+            <h4 id="state">{{gameState}}</h4>
+            <h1>{{result}}</h1>
+            <form v-on:submit="onSubmitForm">
+                <input ref="answer" type="text" id="enter" maxlength="4" v-model="value" >
+                <button type="submit" id="btn">Type</button>
+            </form>
+            <h3 style="margin-top: 20px"> Tries </h3>
+            <div id="try">{{tries.length}}</div>
+            <ul>
+                <li v-for="t in tries" v-bind:key="t.id">
+                    <div id="bold">{{t.try}}</div>
+                    <div>{{t.result}}</div>
                 </li>
             </ul>
-            </v-container>
-        </div>
+        </v-container>
+    </div>
 </template>
 <script>
 import * as rMod from "../ranking_components/ranking";
@@ -59,7 +54,6 @@ export default {
             logo: require("./gameAssets/Updown/images/logo_gray.jpg")
         }
     },
-
     methods: {
         startTimer: function() {
             this.timer = setInterval(() => this.countdown(), 1000);
@@ -92,6 +86,13 @@ export default {
                 this.totalTime--;
             } else {
                 alert(`time over!`);
+                // ranking
+                if(this.fnGetAuthStatus) {
+                    rMod.recordNewRank('upDown_game', this.fnGetUser.id, this.fnGetUser.name, 0);
+                }
+                rMod.detectGame(false, true, false);
+                this.$router.push('/rankingPage');
+
                 this.answer = Math.floor(Math.random()*100);
                 this.score = 100;
                 this.life = 5;
@@ -116,8 +117,10 @@ export default {
                 alert(`Game over! your score is 0, the answer was ${this.answer}`);
                 // ranking
                 if(this.fnGetAuthStatus) {
-                    rMod.writeUserGameData('upDown_game', this.fnGetUser.id, this.fnGetUser.name, 0);
+                    rMod.recordNewRank('upDown_game', this.fnGetUser.id, this.fnGetUser.name, 0);
                 }
+                rMod.detectGame(false, true, false);
+                this.$router.push('/rankingPage');
 
                 this.answer = Math.floor(Math.random()*100);
                 this.score = 100;
@@ -141,6 +144,13 @@ export default {
                     });
                 //this.result = "You win!";
                 alert(`You win! Bonus score is ${this.totalTime}. Final score is ${temp}`);
+                // ranking
+                if(this.fnGetAuthStatus) {
+                    rMod.recordNewRank('upDown_game', this.fnGetUser.id, this.fnGetUser.name, temp);
+                }
+                rMod.detectGame(false, true, false);
+                this.$router.push('/rankingPage');
+
                 this.answer = Math.floor(Math.random()*100);
                 this.score = 100;
                 this.life = 5;
@@ -191,12 +201,12 @@ export default {
     },
     computed: {
         fnGetAuthStatus() {
-        return this.$store.getters.fnGetAuthStatus
-      },
-      fnGetUser() {
-          let oUserInfo = this.$store.getters.fnGetUser;
-          return oUserInfo;
-      }
+            return this.$store.getters.fnGetAuthStatus
+        },
+        fnGetUser() {
+            let oUserInfo = this.$store.getters.fnGetUser;
+            return oUserInfo;
+        }
     }
 };
 </script>
