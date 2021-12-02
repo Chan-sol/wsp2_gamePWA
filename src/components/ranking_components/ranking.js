@@ -7,16 +7,45 @@ function detectGame(puzzleGameStatus, upDownGameStatus, MukchipaGameStatus) {
     gStatus[2] = MukchipaGameStatus;
 }
 
+let currentScore = 0;
 function recordNewRank(game, userId, name, score) {
+    currentScore = score;
     squidDatabase.ref(game + '/' + userId).on('value', (snapshot) => {
         const userRecordData = snapshot.val();
         if(userRecordData === null ||userRecordData.user_score < score){
             squidDatabase.ref(game + '/' + userId).set({
                 user_name: name,
-                user_score: score
+                user_score: score,
             });
         }
     });
 }
 
-export { recordNewRank, detectGame, gStatus };
+let userHighScore;
+function readUserHighScore(game, userId) {
+    squidDatabase.ref(game + '/' + userId).on('value', (snapshot) => {
+        const userRecordData = snapshot.val();
+        userHighScore = userRecordData.user_score;
+        return userHighScore;
+    })
+}
+
+
+// let userRank = [[],[],[]];
+// function setUserRank(game, record, score){
+//     if(game === 'puzzle_game'){
+//         userRank[0].push(game);
+//         userRank[0].push(record);
+//         userRank[0].push(score);
+//     } else if(game === 'upDown_game') {
+//         userRank[1].push(game);
+//         userRank[1].push(record);
+//         userRank[1].push(score);
+//     } else if(game === 'MuChipa_game'){
+//         userRank[2].push(game);
+//         userRank[2].push(record);
+//         userRank[2].push(score);
+//     }
+// }
+
+export { recordNewRank, detectGame, gStatus, currentScore, readUserHighScore };
