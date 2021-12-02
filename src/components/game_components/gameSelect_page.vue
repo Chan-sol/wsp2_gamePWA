@@ -27,7 +27,7 @@
             <v-divider></v-divider>
             <p class="game_description">This is our game 3.</p>
             <div class="game_button">
-            <v-btn fab large class="mt-5" color="black" dark to="/game3">
+            <v-btn fab large class="mt-5" color="black" dark to="/MukChiPa">
                 <v-icon>check_box_outline_blank</v-icon>
             </v-btn>
             </div>
