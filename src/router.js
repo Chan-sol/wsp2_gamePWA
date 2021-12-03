@@ -36,14 +36,12 @@ const router = new VueRouter({
         path: '/emailLogin', name:'email_Login_page',
         components: {
             default: () => import('./components/login_components/email_Login_page.vue'),
-            sidebar: () => import('./components/NavigationBar_components/email_page_nav.vue'),
         },
     },
     {
         path: '/emailRegister', name:'email_Register_page',
         components: {
             default: () => import('./components/login_components/email_Register_page.vue'),
-            sidebar: () => import('./components/NavigationBar_components/email_page_nav.vue'),
         },
     },
 
@@ -61,11 +59,17 @@ const router = new VueRouter({
     },
     {
          path: '/Updown', name:'Updown_game',
-         component: () => import('./components/game_components/Updown_game.vue')
+         components: {
+            default: () => import('./components/game_components/Updown_game.vue'),
+            sidebar: () => import('./components/NavigationBar_components/game_nav.vue'),
+        }
     },
     {
          path: '/MukChiPa', name:'MukChiPa_game',
-         component: () => import('./components/game_components/MukChiPa_game.vue')
+         components: {
+            default: () => import('./components/game_components/MukChiPa_game.vue'),
+            sidebar: () => import('./components/NavigationBar_components/game_nav.vue'),
+        }
     },
     // ranking 관련 path
     {
