@@ -4,10 +4,10 @@ let gStatus = [false, false, false];
 let currentScore = 0;
 
 // game page에서 ranking으로 넘어갈 때 이용
-function detectGame(puzzleGameStatus, upDownGameStatus, MukchipaGameStatus) {
+function detectGame(puzzleGameStatus, upDownGameStatus, MukChiPaGameStatus) {
     gStatus[0] = puzzleGameStatus;
     gStatus[1] = upDownGameStatus;
-    gStatus[2] = MukchipaGameStatus;
+    gStatus[2] = MukChiPaGameStatus;
 }
 
 // online.ver 기록
@@ -81,7 +81,7 @@ function showRankingTop10(ranking) {
 // user 순위
 function userRank(ranking, name) {
     let userRank = []; // userRank[0] : medal, userRank[1] : score
-    for(let i=0; i<ranking.length-1; i++){
+    for(let i=0; i<ranking.length; i++){
         if(ranking[i][2] === name){
             userRank.push(ranking[i][0]); // medal
             userRank.push(ranking[i][4]); // score

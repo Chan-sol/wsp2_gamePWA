@@ -26,7 +26,19 @@
                             {{ this.upDownUserRank[1] }}
                         </div>
                     </div>
-                    <div class="mukChiPaGameRecord">MukChiPa Game : </div>
+                    <div class="mukChiPaGameRecord">
+                        <div class="gameName">
+                            [ MukChiPa Game ]
+                        </div>
+                        Top 
+                        <div class="record">
+                            {{ this.mukChiPaUserRank[0] }}
+                        </div>
+                         / Score 
+                        <div class="score">
+                            {{ this.mukChiPaUserRank[1] }}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -59,7 +71,12 @@ export default {
         const upDownGameRanking = makeGameRanking('upDown_game'); // no medal
         const upDownGameMedalRanking = addMedalToRanking(upDownGameRanking);
         const upDownGameUserRank = userRank(upDownGameMedalRanking, this.fnGetUser.name);
-        this.upDownUserRank = upDownGameUserRank;        
+        this.upDownUserRank = upDownGameUserRank;
+
+        const mukChiPaGameRanking = makeGameRanking('MukChiPa_game'); // no medal
+        const mukChiPaGameMedalRanking = addMedalToRanking(mukChiPaGameRanking);
+        const mukChiPaGameUserRank = userRank(mukChiPaGameMedalRanking, this.fnGetUser.name);
+        this.mukChiPaUserRank = mukChiPaGameUserRank;
     },
     computed: {
         fnGetAuthStatus() {
@@ -85,11 +102,9 @@ export default {
 <style src="../css/rankingBox.css"></style>
 <style scoped>
     @import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
-
-
     .page {
         width: 100%;
-        height: 100%;
+        height: 95%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;

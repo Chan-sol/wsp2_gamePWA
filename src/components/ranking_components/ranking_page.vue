@@ -83,13 +83,13 @@ export default {
             }
         } else {
             return {
-                title: 'Mukchipa Game Rank',
-                currentGame: 'MukChipa_game',
+                title: 'MukChiPa Game Rank',
+                currentGame: 'MukChiPa_game',
                 userRecord: 0,
                 userHighScore: '',
                 userCurrentScore: rMod.currentScore,
                 showRankingData: [],
-                restartPath: '/MukChipa',
+                restartPath: '/MukChiPa',
                 rankingBtnClick: false,
             }
         }
@@ -104,6 +104,8 @@ export default {
         const gameUserRank = rMod.userRank(gameMedalRanking, this.fnGetUser.name);
         this.userRecord = gameUserRank[0];
         this.userHighScore = gameUserRank[1];
+        console.log(this.userRecord);
+        console.log(this.userHighScore);
         this.showRankingData = rMod.showRankingTop10(gameMedalRanking)
     },
     methods: {
