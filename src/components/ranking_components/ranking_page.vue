@@ -28,15 +28,13 @@
                         <div class="score">
                             {{ item[4] }}
                         </div>
-                        <!-- {{ item[0] }} 위 {{ item[2] }} {{ item[4] }} -->
                     </li> 
                 </ul>
             </div>
         </div>
         <div class="buttonsContainer">
             <div class="buttonContainer">
-                <!-- ranking button은 한 번만 누를 수 있게 v-if를 써버리자~! -->
-                <button v-if="fnGetAuthStatus && this.rankingBtnClick === false" @click="fnUserGameData" class="buttons squidRed">
+                <button v-if="fnGetAuthStatus && this.rankingBtnClick === false" @click="fnRankingData" class="buttons squidRed">
                     <v-icon color="white" class="mr-1">star_half</v-icon>Ranking
                 </button>
                 <button @click="fnRestart()" class="buttons squidGreen">
@@ -66,8 +64,8 @@ export default {
                 title: 'Puzzle Game Rank',
                 currentGame: 'puzzle_game',
                 userRecord: 0,
-                userCurrentScore: rMod.currentScore,
                 userHighScore: '',
+                userCurrentScore: rMod.currentScore,
                 showRankingData: [],
                 restartPath: '/puzzle',
                 rankingBtnClick: false,
@@ -77,8 +75,8 @@ export default {
                 title: 'UpDown Game Rank',
                 currentGame: 'upDown_game',
                 userRecord: 0,
-                userCurrentScore: rMod.currentScore,
                 userHighScore: '',
+                userCurrentScore: rMod.currentScore,
                 showRankingData: [],
                 restartPath: '/Updown',
                 rankingBtnClick: false,
@@ -88,9 +86,9 @@ export default {
                 title: 'Mukchipa Game Rank',
                 currentGame: 'MukChipa_game',
                 userRecord: 0,
-                userCurrentScore: rMod.currentScore,
                 userHighScore: '',
-                rankingData: [],
+                userCurrentScore: rMod.currentScore,
+                showRankingData: [],
                 restartPath: '/MukChipa',
                 rankingBtnClick: false,
             }
@@ -101,47 +99,15 @@ export default {
             // 오프라인 version
             return;
         }
-        // ranking 저장 (오름차순 or 내림차순)
-        squidDatabase.ref(this.currentGame + '/').orderByChild('user_score').on('child_added', (snapshot) => {
-            // Object.entries(객체) : 객체를 배열로 변환
-            const oneUserRecordArr2 = Object.entries(snapshot.val()); // 2차원
-            const oneUserRecordArr1 = oneUserRecordArr2[0].concat(oneUserRecordArr2[1]); // 1차원
-
-            this.currentGame === 'puzzle_game' ? rank.push(oneUserRecordArr1) : rank.unshift(oneUserRecordArr1);
-            // 오름차순 순위면 앞으로 쌓기 (unshift) => upDown, Mukchipa
-            // 내림차순 순위면 뒤로 쌓기 (push) => puzzle
-        });
+        const gameRanking = rMod.makeGameRanking(this.currentGame); // no medal
+        const gameMedalRanking = rMod.addMedalToRanking(gameRanking);
+        const gameUserRank = rMod.userRank(gameMedalRanking, this.fnGetUser.name);
+        this.userRecord = gameUserRank[0];
+        this.userHighScore = gameUserRank[1];
+        this.showRankingData = rMod.showRankingTop10(gameMedalRanking)
     },
     methods: {
-        fnUserGameData() {
-            // medal(순위)[index: 0] 추가
-            // userRecord, user_score 저장
-            let numOfEqual = 0;
-            let medal = 1;
-            rank[0].unshift(1);
-            for(let i=1; i<rank.length; i++){
-                if(rank[i][3] === rank[i-1][4]){
-                    // rank[i][3] : user_score, rank[i-1][4] : previous_user_score
-                    // 즉, 동점인 상황
-                    numOfEqual++;
-                    rank[i].unshift(medal);
-                } else {
-                    // 점수가 달라짐
-                    medal = medal + ( numOfEqual + 1 );
-                    rank[i].unshift(medal);
-                    numOfEqual = 0;
-                }
-            }
-
-            for(let i=0; i<rank.length-1; i++){
-                if(rank[i][2] === this.fnGetUser.name){
-                    this.userRecord = rank[i][0]; // medal
-                    this.userHighScore = rank[i][4]; // user_score
-                    break;
-                }
-            }
-
-            this.showRankingData = rank.length > 10 ? rank.slice(0, 10) : rank.slice(0, rank.length);
+        fnRankingData() {
             this.rankingBtnClick = true;
         }
     },
@@ -224,17 +190,13 @@ export default {
         margin-right: 3px;
     }
 
-    .medal {
+    .medal, .name, .score {
         font-size: 12px;
     }
 
     .name {
         color: rgb(34, 34, 34);
         margin-right: 50px;
-    }
-
-    .score {
-        font-size: 12px;
     }
 
     .userRecord {

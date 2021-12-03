@@ -12,8 +12,20 @@
             <div class="content">
                 <h2>Your Ranking Status</h2>
                 <div class="yourGameRecord">
-                    <div class="puzzleGameRecord">Puzzle Game : </div>
-                    <div class="upDownGameRecord">UpDown Game : {{ this.upDownScore }}</div>
+                    <div class="puzzleGameRecord mb-5">Puzzle Game : </div>
+                    <div class="upDownGameRecord mb-5">
+                        <div class="gameName">
+                            [ UpDown Game ]
+                        </div>
+                        Top 
+                        <div class="record">
+                            {{ this.upDownUserRank[0] }}
+                        </div>
+                         / Score 
+                        <div class="score">
+                            {{ this.upDownUserRank[1] }}
+                        </div>
+                    </div>
                     <div class="mukChiPaGameRecord">MukChiPa Game : </div>
                 </div>
             </div>
@@ -29,17 +41,30 @@
     </v-container>
 </template>
 <script>
-import { readUserHighScore } from "../ranking_components/ranking.js";
+import { makeGameRanking, addMedalToRanking, userRank } from "../ranking_components/ranking.js";
 
 export default {
     data() {
         return {
-            // puzzleScore: readUserHighScore('puzzle_game', this.fnGetUser.id),
-            upDownScore: readUserHighScore('upDown_game', this.fnGetUser.id),
-            // mukChiPaScore: readUserHighScore('mukChiPa_game', this.fnGetUser.id),
+            puzzleUserRank: [],
+            upDownUserRank: [],
+            mukChiPaUserRank: [],
         }
     },
+    created() {
+        if(!this.fnGetAuthStatus){
+            // 오프라인 version
+            return;
+        }
+        const upDownGameRanking = makeGameRanking('upDown_game'); // no medal
+        const upDownGameMedalRanking = addMedalToRanking(upDownGameRanking);
+        const upDownGameUserRank = userRank(upDownGameMedalRanking, this.fnGetUser.name);
+        this.upDownUserRank = upDownGameUserRank;        
+    },
     computed: {
+        fnGetAuthStatus() {
+            return this.$store.getters.fnGetAuthStatus;
+        },
         // 스토어에서 로그인된 계정 정보 반환
         fnGetUser() {
             let oUserInfo = this.$store.getters.fnGetUser;
@@ -61,11 +86,14 @@ export default {
 <style scoped>
     @import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
 
-    .avatar_style {
-        /* 사진 이미지 원 모양 */
-        width: 15vmin;
-        height: 15vmin;
-        border-radius: 50%;
+
+    .page {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
     }
 
     .welcome {
@@ -75,13 +103,21 @@ export default {
         color: #e6ebce;
     }
 
-    .page {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
+    h2 {
+        color: #e6ebce;
+    }
+
+    .gameName {
+        font-size: 18px;
+        font-weight: bold;
+        color: #000000;
+    }
+
+    .record, .score {
+        display: inline;
+        font-size: 18px;
+        font-weight: bold;
+        color: #000000;
     }
 </style>
 <style src="../css/button.css"></style>
