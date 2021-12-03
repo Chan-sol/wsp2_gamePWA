@@ -1,10 +1,8 @@
 <template>
   <div>
-    <v-list>
-      <v-list-item>
-        <v-list-item-title class="mt-5 welcome">Welcome to S<b>Q</b>UID G<b>A</b>M<b>E</b></v-list-item-title>
-      </v-list-item>
-    </v-list>
+    <v-list-item class="mb-5">
+      <v-list-item-title class="mt-5 welcome">Welcome to S<b>Q</b>UID G<b>A</b>M<b>E</b></v-list-item-title>
+    </v-list-item>
   </div>
 </template>
 <script>

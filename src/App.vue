@@ -20,18 +20,24 @@
             </v-list-item>
           </v-list>
           <v-divider></v-divider>
+          <v-list>
           <router-view :items="items" name="sidebar"></router-view>
           <!-- 로그인된 경우만 로그아웃 버튼 표시 -->
-          <v-list>
             <v-list-item @click="fnDoLogout" v-if="fnGetAuthStatus">
               <v-list-item-action>
                 <v-icon>mdi-arrow-right-bold-box-outline</v-icon>
               </v-list-item-action>
               <v-list-item-title>Logout</v-list-item-title>
             </v-list-item>
+            <v-list-item v-if="!fnGetAuthStatus && this.$route.path !== '/first'" to="/first">
+              <v-list-item-action>
+                <v-icon>mdi-login</v-icon>
+              </v-list-item-action>
+              <v-list-item-title>Login Page</v-list-item-title>
+            </v-list-item>
             <v-list-item to="/end">
               <v-list-item-action>
-                <v-icon>mdi-exit</v-icon>
+                <v-icon>waving_hand</v-icon>
               </v-list-item-action>
               <v-list-item-title>Exit</v-list-item-title>
             </v-list-item>

@@ -1,28 +1,8 @@
 <template>
-    <v-list>
-        <v-list-item value="true" v-for="(item, i) in fnGetMenuItems" :to="item.to" :key="i">
-          <v-list-item-action>
-            <v-icon v-html="item.icon"></v-icon>
-          </v-list-item-action>
-          <v-list-item-title v-text="item.title"></v-list-item-title>
-        </v-list-item>
-    </v-list>
+  <v-list-item to="/">
+    <v-list-item-action>
+      <v-icon>mdi-launch</v-icon>
+    </v-list-item-action>
+    <v-list-item-title>Start Page</v-list-item-title>
+  </v-list-item>
 </template>
-<script>
-export default {
-    computed: {
-      fnGetAuthStatus() {
-        return this.$store.getters.fnGetAuthStatus
-      },
-      fnGetMenuItems() {
-        return [
-          {
-            title: 'Start Page',
-            to: '/',
-            icon: 'mdi-launch'
-          }
-        ]
-      },
-    }
-}
-</script>
