@@ -24,6 +24,8 @@
 </template>
 
 <script>
+import * as rMod from "../ranking_components/ranking";
+
     const rspCoords = {
         바위: '0',
         가위: '-313px',
@@ -121,17 +123,31 @@
                         }
                     }else if(leader ===2){
                         if(finalresult===0){
-                            if(moksum === 0){
+                            moksum -= 1;
+                            this.life -= 1;
+                            this.dead += 1;
+                            if(moksum <= 0){
+                                // ranking 기록
+                                console.log('게임 끝');
+                                if(this.fnGetAuthStatus) {
+                                    rMod.recordNewRank('MukChiPa_game', this.fnGetUser.id, this.fnGetUser.name, this.score);
+                                    console.log('기록 끝');
+                                } else {
+                                    rMod.recordCurrentScore(this.score);
+                                }
                                 clearInterval(interval);
-                                alert('GAME OVER!! RETRY?');
-                                location.reload();
+                                // location.reload();
+                                rMod.detectGame(false, false, true);
+                                console.log('랭킹페이지로');
+                                setTimeout(() =>{
+                                    alert('GAME OVER!!');
+                                    this.$router.push('/rankingPage');
+                                }, 2000);
                             }
                             else{
+                                console.log(moksum);
                                 this.result = "<LOSE!!> A new game will start in 3 seconds";
-                                this.life -= 1;
-                                this.dead += 1;
                                 leader = 0;
-                                moksum -= 1;
                                 setTimeout(() =>{
                                     this.changeHand();
                                 }, 3000);
@@ -152,6 +168,15 @@
                 }
             },
         },
+        computed: {
+            fnGetAuthStatus() {
+                return this.$store.getters.fnGetAuthStatus
+            },
+            fnGetUser() {
+                let oUserInfo = this.$store.getters.fnGetUser;
+                return oUserInfo;
+            }
+        },
         mounted(){
             this.changeHand();
         },
@@ -161,4 +186,4 @@
     };
 </script>
 
-<style src="./gameCss/MukChiPa_game.css"></style>
+<style src="./gameCss/MukChiPa_game.css" scoped></style>
