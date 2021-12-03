@@ -92,6 +92,7 @@ export default {
                 } else {
                     rMod.recordCurrentScore(temp);
                 }
+                clearInterval(this.timer);
                 rMod.detectGame(false, true, false);
                 this.$router.push('/rankingPage');
 
@@ -102,7 +103,6 @@ export default {
                 this.value = '';
                 this.id = 0;
                 this.totalTime = 60;
-                clearInterval(this.timer);
                 this.timer = null;
                 this.resetButton = false;
                 this.gameState = `Game over. Click Game start button to replay`;
@@ -123,6 +123,7 @@ export default {
                 } else {
                     rMod.recordCurrentScore(temp);
                 }
+                clearInterval(this.timer);
                 rMod.detectGame(false, true, false);
                 this.$router.push('/rankingPage');
 
@@ -133,7 +134,6 @@ export default {
                 this.value = '';
                 this.id = 0;
                 this.totalTime = 60;
-                clearInterval(this.timer);
                 this.timer = null;
                 this.resetButton = false;
                 this.gameState = `Game over. If you want replay, click Game start button`;
@@ -154,6 +154,7 @@ export default {
                 } else {
                     rMod.recordCurrentScore(temp);
                 }
+                clearInterval(this.timer);
                 rMod.detectGame(false, true, false);
                 this.$router.push('/rankingPage');
 
@@ -164,7 +165,6 @@ export default {
                 this.value = '';
                 this.id = 0;
                 this.totalTime = 60;
-                clearInterval(this.timer);
                 this.timer = null;
                 this.resetButton = false;
                 this.gameState = `You win. If you want replay, click Game start button`;
