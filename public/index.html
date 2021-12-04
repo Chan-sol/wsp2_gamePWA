@@ -4,12 +4,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>오징어 게임</title>
+    <title>Squid Game</title>
     <link rel="manifest" href="manifest.json">
     <link rel="shortcut icon" href="img/icons/squid_favicon.ico">
     <link rel="apple-touch-icon" href="img/icons/logo-192x192.png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js'></script>
   </head>
   <body>
     <noscript>
@@ -22,7 +23,7 @@
         navigator.serviceWorker.register('/service_worker.js')
         .then(function(){
           console.log('서비스 워커가 등록됨!');
-        })
+        });
       }
     </script>
   </body>
