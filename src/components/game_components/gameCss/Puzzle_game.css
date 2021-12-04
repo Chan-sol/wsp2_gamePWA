@@ -3,7 +3,7 @@
             box-sizing: border-box;
   }
   
-  :root {
+  #puzzleEntire {
     --dark: #25272b;
     --light: #99a0af;
     --highlight: #357935;
@@ -12,23 +12,23 @@
     --ratio: 4;
     --maxBoardWidth: 80vmin;
     --smallColumn: calc(240px + 2em);
-    --backgroundImage: '';
+    --backgroundImage: './gameAssets/Puzzle/puzzle1.jpeg';
     --radius: 8px;
   }
   
   @media (min-width: 480px) {
-    :root {
+    #puzzleEntire {
       --maxBoardWidth: 60vh;
     }
   }
   
   @media (min-width: 1020px) {
-    :root {
+    #puzzleEntire {
       --maxBoardWidth: 70vh;
     }
   }
   
-  body {
+  #board {
     font-family: Nunito, sans-serif;
     min-height: 100vh;
     margin: 0;
@@ -511,3 +511,16 @@
     }
   }
   
+  .reshuffle {
+    margin: 1em 0 0;
+    padding: 2vmin 3vmin;
+    font-size: 1rem;
+    border-radius: 20vmin;
+    border: none;
+    text-transform: uppercase;
+    outline-color: var(--highlight);
+	background: white;
+    font-family: Nunito, sans-serif;
+    color: var(--dark);
+	font-weight: bold;
+  }

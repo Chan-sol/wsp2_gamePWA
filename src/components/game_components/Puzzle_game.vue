@@ -1,83 +1,90 @@
 <template>
-    <div id="board">
-        <div id="game-group">
-            <form @click="handleClick" :aria-label="`${howManyCorrect} of ${ratioSquared} tiles correctly placed.`" :class="{dim: dimTiles, invertNumbers: invertNumbers, showNumbers: showNumbers}">
-                <transition-group name="slide" id="innerBoard" tag="div" :style="{gridTemplateColumns: `repeat(${ratio}, 1fr)`, gridTemplateColumns: `repeat(${ratio}, 1fr)`}">
-                    <button 
-                        v-for="(tile, index) in tiles" 
-                        :key="tile.val" @keyup.prevent="handleArrow"
-                        :index="index" :ref="!tile.val && 'empty'" 
-                        :disabled="!tile.isPossibleMove && tile.val > 0"
-                        class="tile"
-                        :class="{ correct: isTileCorrect(tile.val,index), possible_move: tile.isPossibleMove }" 
-                        :aria-label="getAccessibleTilePosition(tile.val, index)"
-                        :style="{
-                            backgroundPosition: getBackgroundPosition(tile.val),
-                            backgroundSize: `calc(100% * ${ratio}) calc(100% * ${ratio})`
-                        }"
-                    >
-                        <span v-if="tile.val">{{showNumbers ? tile.val : ''}}</span>
-                    </button>
-                </transition-group>
-                
-                <transition name="fade">
-                    <div v-if="!gameStarted" class="loader"><p>Randomizing solvable puzzle<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span></p></div>
-                </transition>
-            </form>
-            
-            <p id="counter">
-                <span id="progress-bar" :style="{width: howManyCorrect / ratioSquared * 100 + '%'}"></span>
-                <strong>{{howManyCorrect}} / {{ratioSquared}}</strong>
-            </p>
-            
-            <p aria-hidden="true">Play with 🖱️, 👆, or ⌨️ ⬆️ ➡️ ⬇️ ⬅️</p>
-            <p class="sr">Play with mouse, touch, or keyboard.</p>
-        </div>
-	
-	
-	<aside id="options">			
-		<div id="custom-image">
-			<label for="custom-image-input">Custom Image:</label>
-			<select v-model="imageSelect" name="imageSelect" id="imageSelect">
-				<option value="./gameAssets/numberBaseball/puzzle1.jpeg">깐부토끼1</option>
-				<option value="./gameAssets/numberBaseball/puzzle2.jpeg">깐부토끼2</option>
-				<option value="./gameAssets/numberBaseball/puzzle3.jpeg">깐부토끼3</option>
-				<option value="./gameAssets/numberBaseball/puzzle4.jpeg">깐부토끼4</option>
-			</select>
-			
-			<input v-if="imageSelect === `custom`" @click="highlightInput" v-model="customImage" id="custom-image-input" type="text"/>
-		</div>
+	<div id="puzzleEntire">
+		<div id="board">
+			<div id="game-group">
+				<form @click="handleClick" :aria-label="`${howManyCorrect} of ${ratioSquared} tiles correctly placed.`" :class="{dim: dimTiles, invertNumbers: invertNumbers, showNumbers: showNumbers}">
+					<transition-group name="slide" id="innerBoard" tag="div" :style="{gridTemplateColumns: `repeat(${ratio}, 1fr)`, gridTemplateColumns: `repeat(${ratio}, 1fr)`}">
+						<button 
+							v-for="(tile, index) in tiles" 
+							:key="tile.val" @keyup.prevent="handleArrow"
+							:index="index" :ref="!tile.val && 'empty'" 
+							:disabled="!tile.isPossibleMove && tile.val > 0"
+							class="tile"
+							:class="{ correct: isTileCorrect(tile.val,index), possible_move: tile.isPossibleMove }" 
+							:aria-label="getAccessibleTilePosition(tile.val, index)"
+							:style="{
+								backgroundPosition: getBackgroundPosition(tile.val),
+								backgroundSize: `calc(100% * ${ratio}) calc(100% * ${ratio})`
+							}"
+						>
+							<span v-if="tile.val">{{showNumbers ? tile.val : ''}}</span>
+						</button>
+					</transition-group>
+					
+					<transition name="fade">
+						<div v-if="!gameStarted" class="loader"><p>Randomizing solvable puzzle<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span></p></div>
+					</transition>
+				</form>
+
+				<p id="timer">                
+					<strong>Time : {{time}}</strong>
+				</p>
+				
+				<p id="counter">
+					<span id="progress-bar" :style="{width: howManyCorrect / ratioSquared * 100 + '%'}"></span>
+					<strong>{{howManyCorrect}} / {{ratioSquared}}</strong>
+				</p>
+				
+				<p aria-hidden="true">Play with 🖱️, 👆, or ⌨️ ⬆️ ➡️ ⬇️ ⬅️</p>
+				<p class="sr">Play with mouse, touch, or keyboard.</p>
+			</div>
 		
-		<div v-if="showSolution" id="solution" :style="{backgroundImage: imageSelect == 'custom' ? `url(${customImage})` : `url(${imageSelect})`}">
-			<span>[Solution]</span>
-		</div>
 		
-		<div class="options-group">
-			<input v-model="showSolution" type="checkbox" id="show-solution">
-			<label for="show-solution">Show solution</label>
-		</div>
-		
-		<div class="options-group">
-			<input v-model="dimTiles" type="checkbox" id="highlight-tiles">
-			<label for="highlight-tiles">Dim incorrect tiles</label>
-		</div>
-		
-		<div class="options-group">
-			<input v-model="showNumbers" type="checkbox" id="show-numbers">
-			<label for="show-numbers">Show numbers</label>
-			
-			<transition name="fade">
-				<div v-if="showNumbers">
-					<input v-model="invertNumbers" type="checkbox" id="invert-numbers">
-					<label for="invert-numbers">Invert number colors</label>
+			<aside id="options">			
+				<div id="custom-image">
+					<label for="custom-image-input">Custom Image:</label>
+					<select v-model="imageSelect" name="imageSelect" id="imageSelect">
+						<option value="./gameAssets/Puzzle/puzzle1.jpeg">깐부토끼1</option>
+						<option value="./gameAssets/Puzzle/puzzle2.jpeg">깐부토끼2</option>
+						<option value="./gameAssets/Puzzle/puzzle3.jpeg">깐부토끼3</option>
+						<option value="./gameAssets/Puzzle/puzzle4.jpeg">깐부토끼4</option>
+					</select>
+					
+					<input v-if="imageSelect === `custom`" @click="highlightInput" v-model="customImage" id="custom-image-input" type="text"/>
 				</div>
-			</transition>
+				
+				<div v-if="showSolution" id="solution" :style="{backgroundImage: imageSelect == 'custom' ? `url(${customImage})` : `url(${imageSelect})`}">
+					<span>[Solution]</span>
+				</div>
+				
+				<div class="options-group">
+					<input v-model="showSolution" type="checkbox" id="show-solution">
+					<label for="show-solution">Show solution</label>
+				</div>
+				
+				<div class="options-group">
+					<input v-model="dimTiles" type="checkbox" id="highlight-tiles">
+					<label for="highlight-tiles">Dim incorrect tiles</label>
+				</div>
+				
+				<div class="options-group">
+					<input v-model="showNumbers" type="checkbox" id="show-numbers">
+					<label for="show-numbers">Show numbers</label>
+					
+					<transition name="fade">
+						<div v-if="showNumbers">
+							<input v-model="invertNumbers" type="checkbox" id="invert-numbers">
+							<label for="invert-numbers">Invert number colors</label>
+						</div>
+					</transition>
+				</div>
+				
+				<button @click="randomizeBoard" class="reshuffle">Re-Shuffle</button>
+			</aside>
 		</div>
-		
-		<button @click="randomizeBoard">Re-Shuffle</button>
-	</aside>
-</div>
+	</div>
 </template>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js'></script>
 <script>
     export default{			
 			data() {
@@ -90,10 +97,13 @@
 					showNumbers: false,
 					invertNumbers: false,
 					dimTiles: false,
-					imageSelect: './gameAssets/numberBaseball/puzzle1.jpeg',
-					customImage: './gameAssets/numberBaseball/puzzle4.jpeg',
+					imageSelect: './gameAssets/Puzzle/puzzle1.jpeg',
+					customImage: './gameAssets/Puzzle/puzzle4.jpeg',
 					showSolution: true,
-					gameStarted: false
+					gameStarted: false,
+					time: 0,
+					isRunning: false,
+					interval: null
 				}
 			},
 			
@@ -111,11 +121,11 @@
 				},
 				
 				customImage() {
-					document.querySelector('.root').style.setProperty('--backgroundImage', `url(${this.customImage})`);
+					document.querySelector('#puzzleEntire').style.setProperty('--backgroundImage', `url(${this.customImage})`);
 				},
 				
 				imageSelect() {
-					document.querySelector('.root').style.setProperty('--backgroundImage', this.imageSelect === 'custom' ? `url(${this.customImage})` : `url(${this.imageSelect})`);
+					document.querySelector('#puzzleEntire').style.setProperty('--backgroundImage', this.imageSelect === 'custom' ? `url(${this.customImage})` : `url(${this.imageSelect})`);
 				}
 			},
 			
@@ -143,18 +153,15 @@
 
 				touchBoard.on('swipeup swipedown swipeleft swiperight', (e) => {
 					this.handleClick(e);
-				});
-
-                const kk = document.querySelector('.root')
-                console.log('kk',kk)
+				});                
 				
 				//Set the ratio and background image in CSS
-				document.querySelector('.root').style.setProperty('--ratio', this.ratio);
-				document.querySelector('.root').style.setProperty('--backgroundImage', this.imageSelect === 'custom' ? `url(${customImage})` : `url(${this.imageSelect})`);
+				document.querySelector('#puzzleEntire').style.setProperty('--ratio', this.ratio);
+				document.querySelector('#puzzleEntire').style.setProperty('--backgroundImage', this.imageSelect === 'custom' ? `url(${customImage})` : `url(${this.imageSelect})`);
 				
 				//Prevent arrow keys from scrolling
 				innerBoard.addEventListener("keydown", function(e) {
-			// space and arrow keys
+				// space and arrow keys
 					if ([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
 						e.preventDefault();
 					}
@@ -176,7 +183,8 @@
 					
 					if (correctlyPlacedTiles.length === this.ratioSquared && this.gameStarted === true) {
 						setTimeout(()=> { 
-							alert('YOU WIN! Click the "re-shuffle" button to start a new game (or adjust the ratio to get crazy)!')
+							alert('YOU WIN! Click the "re-shuffle" button to start a new game (or adjust the ratio to get crazy)!' + ' Time : ' + this.time)
+							this.stopTimer()
 						}, 200);
 					}
 					
@@ -252,7 +260,7 @@
 								} else {
 									this.gameStarted = true;
 									this.focusEmptyTile();
-									document.querySelector('.root').style.setProperty('--transition', 'transform .15s ease-out');
+									document.querySelector('#puzzleEntire').style.setProperty('--transition', 'transform .15s ease-out');
 									return;
 								}
 							}
@@ -262,6 +270,8 @@
 					setTimeout(() => {
 						randomMove();
 					}, 100);
+
+					this.resetTimer()
 				},
 				
 				getLegalMoves() {
@@ -304,7 +314,7 @@
 					return this.$refs.empty ? Number(this.$refs.empty[0].getAttribute('index')) : this.ratioSquared -1;
 				},
 				
-				handleArrow(e) {
+				handleArrow(e) {					
 					const emptyIndex = this.getEmptyTileIndex();
 					let clickedIndex;
 					
@@ -324,9 +334,11 @@
 						this.swap(emptyIndex, clickedIndex);	
 						this.gameStarted && this.focusEmptyTile();
 					}
+					
+					this.toggleTimer()
 				},
 				
-				handleClick(e) {
+				handleClick(e) {					
 					e.preventDefault();
 					//Get the empty tile and the clicked tile, then both of their index values
 					const emptyIndex = this.getEmptyTileIndex();
@@ -362,6 +374,8 @@
 					} else {
 						return; //If it's not a valid move, do nothing
 					}
+
+					this.toggleTimer()
 				},
 				
 				swap(clickedIndex, emptyIndex) {
@@ -369,11 +383,34 @@
 					const b = this.tiles[emptyIndex];
 					this.$set(this.tiles, clickedIndex, b);
 					this.$set(this.tiles, emptyIndex, a);
+				},
+
+				toggleTimer() {					
+					if (this.isRunning) {
+						return;
+					} else {
+						this.interval = setInterval(this.incrementTime, 1000);
+					}					
+					this.isRunning = !this.isRunning
+				},
+
+				incrementTime() {
+					this.time = parseInt(this.time) + 1;
+				},				
+
+				resetTimer() {
+					clearInterval(this.interval);
+					this.time = 0;
+					this.isRunning = false
+				},
+
+				stopTimer() {
+					clearInterval(this.interval);        			
 				}
 			}
         
     };
 </script>
-<style>
-@import "./gameCss/numberBaseball_game.css";
+<style scoped>
+@import "./gameCss/Puzzle_game.css";
 </style>
