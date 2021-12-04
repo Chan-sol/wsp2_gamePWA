@@ -54,8 +54,8 @@ const router = new VueRouter({
         }
     },
     {
-        path: '/numberBaseball', name:'numberBaseball_game',
-        component: () => import('./components/game_components/numberBaseball_game.vue')
+        path: '/Puzzle', name:'Puzzle_game',
+        component: () => import('./components/game_components/Puzzle_game.vue')
     },
     {
          path: '/Updown', name:'Updown_game',
