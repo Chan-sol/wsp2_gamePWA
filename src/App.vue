@@ -21,7 +21,7 @@
           </v-list>
           <v-divider></v-divider>
           <v-list>
-          <router-view :items="items" name="sidebar"></router-view>
+          <router-view name="sidebar"></router-view>
           <!-- 로그인된 경우만 로그아웃 버튼 표시 -->
             <v-list-item @click="fnDoLogout" v-if="fnGetAuthStatus">
               <v-list-item-action>
@@ -55,12 +55,12 @@
         <v-toolbar-title color="white">S<b>Q</b>UID G<b>A</b>M<b>E</b></v-toolbar-title>
         <v-spacer></v-spacer>
     </v-app-bar>
-    <v-content class="bgColor">
-      <v-slide-x-transition mode="out in">
+    <v-main class="bgColor">
+      <v-slide-x-transition>
         <!-- name 값이 없는 경우가 default components -->
         <router-view></router-view>
       </v-slide-x-transition>
-    </v-content>
+    </v-main>
   </v-app>
 </template>
 <script>
