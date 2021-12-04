@@ -53,7 +53,6 @@
     </v-container>
 </template>
 <script>
-import { squidDatabase } from "../../datasources/firebase"; 
 import * as rMod from "../ranking_components/ranking.js";
 
 let rank = [];

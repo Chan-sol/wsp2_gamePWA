@@ -1,6 +1,5 @@
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
-// import 'firebase/compat/firestore';
 import 'firebase/compat/database';
 
 // firebase DB를 초기화
@@ -14,8 +13,6 @@ const squidGameApp = firebase.initializeApp({
   appId: "1:646328833317:web:9d17e521b6dba8a3e476cc",
   measurementId: "G-DQLJKVG4ZY"
 });
-
-export const squidFirebaseAuth = squidGameApp.auth();
 
 // Get a reference to the database service
 export const squidDatabase = firebase.database(squidGameApp);
