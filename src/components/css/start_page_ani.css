@@ -7,49 +7,48 @@
 
 *{ padding: 0; margin: 0; }
 
+.buttonContainer {
+    position: fixed;
+    bottom: 60px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
 @media ( max-width: 767px ) {
-    .buttonOn {font-size: 8px;
-    margin-top: 10rem;
-    margin-left: 1rem;
-    }
-    .buttonOff {font-size: 8px;
-    margin-top: 10rem;
-    margin-left: 15rem;
-    }
     .gif{display: block;}
     .canvas{display: none;}
+    .buttonOn {font-size: 8px;}
+    .buttonOff {font-size: 8px;}
 }
 @media ( min-width: 768px ) {
     .gif{display: none;}
-    .buttonOn {font-size: 14px;
-    margin-top: 27rem;
-    margin-left: 22rem;
-    }
-    .buttonOff {font-size: 14px;
-    margin-top: 27rem;
-    margin-left: 60rem;
-    }
+    .buttonOn {font-size: 14px;}
+    .buttonOff {font-size: 14px;}
+}
+
+.bgColor {
+    background-color: black;
 }
 
 .gif {
     width: 100%;
-    margin-bottom: 50%;
+    margin-bottom: 35%;
 }
 
 .buttonOn {
-    position: fixed;
     text-align: center;
     font-family: 'Aldrich', sans-serif;
 }
 
 .buttonOff {   
-    position: fixed;
     text-align: center;
     font-family: 'Aldrich', sans-serif;
 }
 
 .canvas{
-    position: fixed;
+    position: relative;
     top: 0; left: 0; right: 0; bottom: 0;
     margin: auto;
     width: 760px; height: 640px;
