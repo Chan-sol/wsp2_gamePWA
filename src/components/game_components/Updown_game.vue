@@ -20,10 +20,10 @@
             <h1>{{result}}</h1>
             <form v-on:submit="onSubmitForm">
                 <input ref="answer" type="text" id="enter" maxlength="4" v-model="value" >
-                <button type="submit" id="btn">Type</button>
+                <button type="submit" id="btn" style="color: white">Type</button>
             </form>
-            <h3 style="margin-top: 20px"> Tries </h3>
-            <div id="try">{{tries.length}}</div>
+            <h3 style="margin-top: 20px; color: white"> Tries </h3>
+            <div id="try" style="color: white">{{tries.length}}</div>
             <ul>
                 <li v-for="t in tries" v-bind:key="t.id">
                     <div id="bold">{{t.try}}</div>
