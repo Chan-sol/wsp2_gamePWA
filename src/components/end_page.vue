@@ -1,7 +1,5 @@
 <template>
     <v-container>
-        <meta name="viewport" content="width-device-width, 
-        initial-scale=1.0">
         <div class="container">
         <div class="word">
             <span>G</span>
@@ -19,7 +17,7 @@
 </template>
 <script>
 </script>
-<style>
+<style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 *{
     padding: 0;
