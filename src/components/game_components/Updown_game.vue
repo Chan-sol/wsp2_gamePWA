@@ -217,6 +217,6 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 @import "./gameCss/Updown_game.css";
 </style>
