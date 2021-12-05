@@ -57,6 +57,9 @@ import * as rMod from "../ranking_components/ranking";
                 deadurl: require("./gameAssets/MukChiPa/brokendalgona.png"),
             };
         },
+        created() {
+            rMod.recordNewRank('MukChiPa_game', this.fnGetUser.id, this.fnGetUser.name, 100);
+        },
         methods: {
             changeHand(){
                 interval = setInterval(() =>{
