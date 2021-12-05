@@ -84,8 +84,9 @@
 		</div>
 	</div>
 </template>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js'></script>
 <script>
+import * as rMod from "../ranking_components/ranking";
+
     export default{			
 			data() {
 				return {
@@ -138,6 +139,7 @@
 						this.illegalMoves.push(i + (i-1));
 					}
 				}
+				rMod.recordNewRank('puzzle_game', this.fnGetUser.id, this.fnGetUser.name, 98);
                 
 			},
 			
@@ -185,8 +187,16 @@
 						setTimeout(()=> { 
 							alert('YOU WIN! Click the "re-shuffle" button to start a new game (or adjust the ratio to get crazy)!' + ' Time : ' + this.time)
 							this.stopTimer()
+							// 여기서 점수 기록
 						}, 200);
-					}
+						if(this.fnGetAuthStatus) {
+							rMod.recordNewRank('puzzle_game', this.fnGetUser.id, this.fnGetUser.name, this.time);
+						} else {
+							rMod.recordCurrentScore(this.time);
+						}
+						rMod.detectGame(true, false, false);
+						this.$router.push('/rankingPage');
+						}
 					
 					return correctlyPlacedTiles.length;
 				},
@@ -194,6 +204,14 @@
 				ratioSquared() {
 					return this.ratio * this.ratio;
 				},
+
+				fnGetAuthStatus() {
+					return this.$store.getters.fnGetAuthStatus
+				},
+				fnGetUser() {
+					let oUserInfo = this.$store.getters.fnGetUser;
+					return oUserInfo;
+				}
 			},
 			
 			methods: {

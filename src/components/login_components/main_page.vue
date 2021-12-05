@@ -12,31 +12,58 @@
             <div class="content">
                 <h2>Your Ranking Status</h2>
                 <div class="yourGameRecord">
-                    <div class="puzzleGameRecord mb-5">Puzzle Game : </div>
+                    <div class="puzzleGameRecord mb-5">
+                        <div class="gameName">
+                            [ Puzzle Game ]
+                        </div>
+                        <div v-if="this.puzzleUserRank.length !== 2">
+                            No Records
+                        </div>
+                        <div v-else>
+                            Top 
+                            <div class="record">
+                                {{ this.puzzleUserRank[0] }}
+                            </div>
+                            / Time  
+                            <div class="score">
+                                {{ this.puzzleUserRank[1] }}
+                            </div>
+                        </div>
+                    </div>
                     <div class="upDownGameRecord mb-5">
                         <div class="gameName">
                             [ UpDown Game ]
                         </div>
-                        Top 
-                        <div class="record">
-                            {{ this.upDownUserRank[0] }}
+                        <div v-if="this.upDownUserRank.length !== 2">
+                            No Records
                         </div>
-                         / Score 
-                        <div class="score">
-                            {{ this.upDownUserRank[1] }}
+                        <div v-else>
+                            Top 
+                            <div class="record">
+                                {{ this.upDownUserRank[0] }}
+                            </div>
+                            / Score 
+                            <div class="score">
+                                {{ this.upDownUserRank[1] }}
+                            </div>
                         </div>
                     </div>
                     <div class="mukChiPaGameRecord">
                         <div class="gameName">
                             [ MukChiPa Game ]
                         </div>
-                        Top 
-                        <div class="record">
-                            {{ this.mukChiPaUserRank[0] }}
+                        <div v-if="this.mukChiPaUserRank.length !== 2">
+                            No Records
                         </div>
-                         / Score 
-                        <div class="score">
-                            {{ this.mukChiPaUserRank[1] }}
+                        <div v-else>
+                            Top 
+                            <div class="record">
+                                {{ this.mukChiPaUserRank[0] }}
+                            </div>
+                            / Score 
+                            <div class="score">
+                                {{ this.mukChiPaUserRank[1] }}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -68,15 +95,24 @@ export default {
             // 오프라인 version
             return;
         }
+
+        const puzzleGameRanking = makeGameRanking('puzzle_game'); // no medal
+        const puzzleGameMedalRanking = addMedalToRanking(puzzleGameRanking);
+        const puzzleGameUserRank = userRank(puzzleGameMedalRanking, this.fnGetUser.name);
+        this.puzzleUserRank = puzzleGameUserRank;
+        console.log(this.puzzleUserRank);
+
         const upDownGameRanking = makeGameRanking('upDown_game'); // no medal
         const upDownGameMedalRanking = addMedalToRanking(upDownGameRanking);
         const upDownGameUserRank = userRank(upDownGameMedalRanking, this.fnGetUser.name);
         this.upDownUserRank = upDownGameUserRank;
+        console.log(this.upDownUserRank);
 
         const mukChiPaGameRanking = makeGameRanking('MukChiPa_game'); // no medal
         const mukChiPaGameMedalRanking = addMedalToRanking(mukChiPaGameRanking);
         const mukChiPaGameUserRank = userRank(mukChiPaGameMedalRanking, this.fnGetUser.name);
         this.mukChiPaUserRank = mukChiPaGameUserRank;
+        console.log(this.mukChiPaUserRank);
     },
     computed: {
         fnGetAuthStatus() {
