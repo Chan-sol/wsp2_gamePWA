@@ -44,10 +44,10 @@
 				<div id="custom-image">
 					<label for="custom-image-input">Custom Image:</label>
 					<select v-model="imageSelect" name="imageSelect" id="imageSelect">
-						<option value="./gameAssets/Puzzle/puzzle1.jpeg">깐부토끼1</option>
-						<option value="./gameAssets/Puzzle/puzzle2.jpeg">깐부토끼2</option>
-						<option value="./gameAssets/Puzzle/puzzle3.jpeg">깐부토끼3</option>
-						<option value="./gameAssets/Puzzle/puzzle4.jpeg">깐부토끼4</option>
+						<option value="../gameAssets/Puzzle/KKANBU_rabbit1.jpeg">KKANBU_rabbit1</option>
+						<option value="../gameAssets/Puzzle/KKANBU_rabbit2.jpeg">KKANBU_rabbit2</option>
+						<option value="../gameAssets/Puzzle/KKANBU_rabbit3.jpeg">KKANBU_rabbit3</option>
+						<option value="../gameAssets/Puzzle/KKANBU_rabbit4.jpeg">KKANBU_rabbit4</option>
 					</select>
 					
 					<input v-if="imageSelect === `custom`" @click="highlightInput" v-model="customImage" id="custom-image-input" type="text"/>
@@ -98,8 +98,8 @@ import * as rMod from "../ranking_components/ranking";
 					showNumbers: false,
 					invertNumbers: false,
 					dimTiles: false,
-					imageSelect: './gameAssets/Puzzle/puzzle1.jpeg',
-					customImage: './gameAssets/Puzzle/puzzle4.jpeg',
+					imageSelect: './gameAssets/Puzzle/KKANBU_rabbit1.jpeg',
+					customImage: './gameAssets/Puzzle/KKANBU_rabbit4.jpeg',
 					showSolution: true,
 					gameStarted: false,
 					time: 0,
