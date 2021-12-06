@@ -98,7 +98,7 @@ import * as rMod from "../ranking_components/ranking";
 					showNumbers: false,
 					invertNumbers: false,
 					dimTiles: false,
-					imageSelect: './gameAssets/Puzzle/KKANBU_rabbit1.jpeg',
+					imageSelect: '../gameAssets/Puzzle/KKANBU_rabbit1.jpeg',
 					customImage: './gameAssets/Puzzle/KKANBU_rabbit4.jpeg',
 					showSolution: true,
 					gameStarted: false,
