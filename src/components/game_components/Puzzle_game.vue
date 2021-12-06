@@ -139,8 +139,6 @@ import * as rMod from "../ranking_components/ranking";
 						this.illegalMoves.push(i + (i-1));
 					}
 				}
-				rMod.recordNewRank('puzzle_game', this.fnGetUser.id, this.fnGetUser.name, 144);
-                
 			},
 			
 			mounted() { //Set styles for any board size properly and randomize it to start		
