@@ -13,7 +13,7 @@
         </div>
         <p id = "result">{{result}} <br><span id = "accent">SCORE: {{score}}</span></p>
         <div id = "computer" class="rock"></div> 
-        <div id = "btn" style ="max-width:400px">
+        <div style ="max-width:400px">
             <button id = "ro" v-on:click="onClickButton('바위')"></button>
             <button id = "si" v-on:click="onClickButton('가위')"></button>
             <button id = "pa" v-on:click="onClickButton('보')"></button> 
