@@ -149,7 +149,7 @@ export default {
 
     .welcome {
         font-family: 'Oswald', sans-serif;
-        font-size: 10vmin;
+        font-size: 9vmin;
         font-weight: bold;
         color: #e6ebce;
     }
